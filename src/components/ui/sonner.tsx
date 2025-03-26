@@ -1,10 +1,12 @@
-import { useTheme } from "next-themes"
+
 import { Toaster as Sonner } from "sonner"
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme()
+  // Remove the useTheme hook which is causing issues
+  // Just use a default theme instead
+  const theme = "light"; // Default theme
 
   return (
     <Sonner
