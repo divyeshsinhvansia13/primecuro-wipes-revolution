@@ -1,5 +1,6 @@
+
 import React, { useState, useEffect, useRef } from "react";
-import { ChevronRight, ChevronLeft } from "lucide-react";
+import { ChevronRight, ChevronLeft, Clock } from "lucide-react";
 import AnimatedImage from "@/components/ui/AnimatedImage";
 import CTAButton from "@/components/ui/CTAButton";
 import { cn } from "@/lib/utils";
@@ -7,31 +8,27 @@ import { cn } from "@/lib/utils";
 const products = [
   {
     id: 1,
-    name: "Essential Fresh Wipes",
-    description: "Our signature fresh-scented wipes for everyday use.",
+    name: "PrimeCuro Skin Care Adult/Baby Wipes - Scented",
+    description: "Gentle, skin-friendly scented wipes that are flushable and biodegradable.",
     price: "$12.99",
-    image: "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+    image: "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    status: "available"
   },
   {
     id: 2,
-    name: "Biodegradable Face Wipes",
-    description: "Gentle, skin-loving facial cleansing wipes.",
+    name: "PrimeCuro Skin Care Adult/Baby Wipes - Unscented",
+    description: "Perfect for sensitive skin, these unscented flushable wipes are gentle and effective.",
     price: "$14.99",
-    image: "https://images.unsplash.com/photo-1629732097571-b042b35add24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1936&q=80"
+    image: "https://images.unsplash.com/photo-1629732097571-b042b35add24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1936&q=80",
+    status: "available"
   },
   {
     id: 3,
-    name: "Travel Pack Bundle",
-    description: "On-the-go mini packs, perfect for travel.",
-    price: "$19.99",
-    image: "https://images.unsplash.com/photo-1583209814683-084c549d8e4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-  },
-  {
-    id: 4,
-    name: "Antibacterial Hand Wipes",
-    description: "Extra strength sanitizing wipes with aloe.",
+    name: "PrimeCuro Disinfected Wipes",
+    description: "Coming soon - Our powerful disinfectant wipes kill 99.9% of germs and bacteria.",
     price: "$15.99",
-    image: "https://images.unsplash.com/photo-1605615923013-f26c14fe7155?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+    image: "https://images.unsplash.com/photo-1605615923013-f26c14fe7155?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    status: "coming-soon"
   }
 ];
 
@@ -81,10 +78,10 @@ const ProductsShowcase = () => {
             FEATURED PRODUCTS
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Discover Our Premium Wipes
+            Premium Care for Every Need
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Carefully formulated for effectiveness and sustainability, our products provide the perfect balance of cleaning power and eco-consciousness.
+            Our specially formulated wipes provide gentle yet effective cleaning for all ages and purposes.
           </p>
         </div>
         
@@ -130,6 +127,14 @@ const ProductsShowcase = () => {
                   className="w-full h-full flex-shrink-0 flex flex-col md:flex-row items-center"
                 >
                   <div className="w-full md:w-1/2 p-6 md:p-12 flex flex-col items-start justify-center">
+                    <div className="mb-3 flex items-center">
+                      {product.status === "coming-soon" && (
+                        <div className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-medium flex items-center">
+                          <Clock className="h-3 w-3 mr-1" />
+                          Coming Soon
+                        </div>
+                      )}
+                    </div>
                     <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
                       {product.name}
                     </h3>
@@ -140,19 +145,30 @@ const ProductsShowcase = () => {
                       {product.price}
                     </p>
                     <div className="flex gap-3">
-                      <CTAButton>
-                        Shop Now
-                      </CTAButton>
-                      <CTAButton variant="outline" icon={false}>
-                        Details
-                      </CTAButton>
+                      {product.status === "available" ? (
+                        <>
+                          <CTAButton>
+                            Shop Now
+                          </CTAButton>
+                          <CTAButton variant="outline" icon={false}>
+                            Details
+                          </CTAButton>
+                        </>
+                      ) : (
+                        <CTAButton variant="secondary">
+                          Notify Me
+                        </CTAButton>
+                      )}
                     </div>
                   </div>
                   <div className="w-full md:w-1/2 h-full">
                     <AnimatedImage 
                       src={product.image} 
                       alt={product.name}
-                      className="w-full h-full object-cover"
+                      className={cn(
+                        "w-full h-full object-cover",
+                        product.status === "coming-soon" && "blur-[2px] opacity-75"
+                      )}
                     />
                   </div>
                 </div>
