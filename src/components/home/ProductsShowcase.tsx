@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import AnimatedImage from "@/components/ui/AnimatedImage";
@@ -75,7 +74,7 @@ const ProductsShowcase = () => {
   };
   
   return (
-    <section className="py-20 bg-gray-50 overflow-hidden">
+    <section className="py-20 bg-blue-50 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <span className="inline-block px-3 py-1 text-xs font-semibold bg-brand-100 text-brand-800 rounded-full mb-3">
@@ -90,7 +89,6 @@ const ProductsShowcase = () => {
         </div>
         
         <div className="relative">
-          {/* Slider controls */}
           <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between items-center z-10 px-4">
             <button
               onClick={prevSlide}
@@ -110,7 +108,6 @@ const ProductsShowcase = () => {
             </button>
           </div>
           
-          {/* Product slider */}
           <div
             ref={slideRef}
             className="relative h-[600px] overflow-hidden"
@@ -163,7 +160,6 @@ const ProductsShowcase = () => {
             </div>
           </div>
           
-          {/* Dots indicator */}
           <div className="flex justify-center mt-8 space-x-2">
             {products.map((_, index) => (
               <button

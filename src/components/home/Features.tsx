@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from "react";
 import { ShieldCheck, Leaf, Droplets, RefreshCw } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -12,7 +11,7 @@ const features = [
   },
   {
     id: 2,
-    title: "Eco-Friendly",
+    title: "Eco-Friendly", 
     description: "Biodegradable materials that break down naturally, minimizing environmental impact.",
     icon: Leaf,
   },
@@ -60,7 +59,7 @@ const Features = () => {
   }, []);
   
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-green-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block px-3 py-1 text-xs font-semibold bg-brand-100 text-brand-800 rounded-full mb-3">
