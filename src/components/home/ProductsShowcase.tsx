@@ -75,7 +75,7 @@ const ProductsShowcase = () => {
   };
   
   return (
-    <section className="py-20 bg-white overflow-hidden">
+    <section className="py-20 bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <span className="inline-block px-3 py-1 text-xs font-semibold bg-brand-100 text-brand-800 rounded-full mb-3">
