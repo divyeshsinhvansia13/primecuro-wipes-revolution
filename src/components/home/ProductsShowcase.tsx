@@ -9,26 +9,41 @@ const products = [
   {
     id: 1,
     name: "PrimeCuro Skin Care Adult/Baby Wipes - Scented",
-    description: "Gentle, skin-friendly scented wipes that are flushable and biodegradable.",
+    subtitle: "Cucumber & Green Tea Fragrance",
+    description: "Gentle, skin-friendly scented wipes that are flushable and biodegradable, enriched with cucumber and green tea extracts for a refreshing clean feeling.",
     price: "$12.99",
-    image: "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    status: "available"
+    image: "/public/lovable-uploads/776ec402-b1da-483b-a4fa-3352b14528d9.png",
+    status: "available",
+    color: "bg-green-50",
+    accentColor: "text-green-700",
+    iconColor: "text-green-600",
+    badges: ["Flushable", "Biodegradable"]
   },
   {
     id: 2,
     name: "PrimeCuro Skin Care Adult/Baby Wipes - Unscented",
-    description: "Perfect for sensitive skin, these unscented flushable wipes are gentle and effective.",
+    subtitle: "Sensitive Skin Formula",
+    description: "Perfect for sensitive skin, these unscented flushable wipes are gentle and effective with added moisturizers to keep skin soft and healthy.",
     price: "$14.99",
-    image: "https://images.unsplash.com/photo-1629732097571-b042b35add24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1936&q=80",
-    status: "available"
+    image: "/public/lovable-uploads/776ec402-b1da-483b-a4fa-3352b14528d9.png",
+    status: "available",
+    color: "bg-blue-50",
+    accentColor: "text-blue-700",
+    iconColor: "text-blue-600",
+    badges: ["Flushable", "For Sensitive Skin"]
   },
   {
     id: 3,
-    name: "PrimeCuro Disinfected Wipes",
-    description: "Coming soon - Our powerful disinfectant wipes kill 99.9% of germs and bacteria.",
+    name: "PrimeCuro Disinfecting Wipes",
+    subtitle: "Lemon & Air Fresh Fragrances",
+    description: "Coming soon - Our powerful disinfectant wipes kill 99.9% of germs and bacteria. Available in refreshing Lemon and Air Fresh scents.",
     price: "$15.99",
-    image: "https://images.unsplash.com/photo-1605615923013-f26c14fe7155?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    status: "coming-soon"
+    image: "/public/lovable-uploads/1c14f5dd-90f5-4be3-893b-e437e0965fa3.png",
+    status: "coming-soon",
+    color: "bg-amber-50",
+    accentColor: "text-amber-700",
+    iconColor: "text-amber-600",
+    badges: ["Kills 99.9% Germs", "Multi-Surface"]
   }
 ];
 
@@ -86,10 +101,10 @@ const ProductsShowcase = () => {
         </div>
         
         <div className="relative">
-          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between items-center z-10 px-4">
+          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between items-center z-10 px-4 md:px-8">
             <button
               onClick={prevSlide}
-              className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-md flex items-center justify-center text-gray-700 hover:bg-white transition-all"
+              className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:bg-white transition-all"
               disabled={isAnimating}
               aria-label="Previous product"
             >
@@ -97,7 +112,7 @@ const ProductsShowcase = () => {
             </button>
             <button
               onClick={nextSlide}
-              className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-md flex items-center justify-center text-gray-700 hover:bg-white transition-all"
+              className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:bg-white transition-all"
               disabled={isAnimating}
               aria-label="Next product"
             >
@@ -107,7 +122,7 @@ const ProductsShowcase = () => {
           
           <div
             ref={slideRef}
-            className="relative h-[600px] overflow-hidden"
+            className="relative h-[620px] md:h-[550px] overflow-hidden rounded-xl shadow-lg"
             onTransitionEnd={handleTransitionEnd}
           >
             <div 
@@ -124,10 +139,19 @@ const ProductsShowcase = () => {
               {products.map((product) => (
                 <div 
                   key={product.id}
-                  className="w-full h-full flex-shrink-0 flex flex-col md:flex-row items-center"
+                  className={cn(
+                    "w-full h-full flex-shrink-0 flex flex-col md:flex-row items-center",
+                    product.color
+                  )}
                 >
                   <div className="w-full md:w-1/2 p-6 md:p-12 flex flex-col items-start justify-center">
-                    <div className="mb-3 flex items-center">
+                    <div className="mb-3 flex flex-wrap items-center gap-2">
+                      {product.badges.map((badge, index) => (
+                        <div key={index} className="bg-white px-3 py-1 rounded-full text-xs font-medium flex items-center">
+                          {badge}
+                        </div>
+                      ))}
+                      
                       {product.status === "coming-soon" && (
                         <div className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-medium flex items-center">
                           <Clock className="h-3 w-3 mr-1" />
@@ -135,9 +159,12 @@ const ProductsShowcase = () => {
                         </div>
                       )}
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">
                       {product.name}
                     </h3>
+                    <p className={cn("text-lg font-medium mb-3", product.accentColor)}>
+                      {product.subtitle}
+                    </p>
                     <p className="text-gray-600 mb-4">
                       {product.description}
                     </p>
@@ -161,15 +188,17 @@ const ProductsShowcase = () => {
                       )}
                     </div>
                   </div>
-                  <div className="w-full md:w-1/2 h-full">
-                    <AnimatedImage 
-                      src={product.image} 
-                      alt={product.name}
-                      className={cn(
-                        "w-full h-full object-cover",
-                        product.status === "coming-soon" && "blur-[2px] opacity-75"
-                      )}
-                    />
+                  <div className="w-full md:w-1/2 h-full p-4 md:p-8 flex items-center justify-center bg-white bg-opacity-50 backdrop-blur-sm">
+                    <div className="w-full max-w-md transition-all duration-300 hover:scale-105">
+                      <AnimatedImage 
+                        src={product.image} 
+                        alt={product.name}
+                        className={cn(
+                          "w-full h-auto object-contain shadow-lg rounded-lg",
+                          product.status === "coming-soon" && "blur-[1px] opacity-90"
+                        )}
+                      />
+                    </div>
                   </div>
                 </div>
               ))}
@@ -180,14 +209,21 @@ const ProductsShowcase = () => {
             {products.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setActiveIndex(index)}
+                onClick={() => {
+                  if (isAnimating) return;
+                  
+                  setActiveIndex(index);
+                  setIsAnimating(true);
+                  setDirection(index > activeIndex ? 'next' : 'prev');
+                }}
                 className={cn(
-                  "w-2 h-2 rounded-full transition-all",
+                  "w-3 h-3 rounded-full transition-all",
                   activeIndex === index 
-                    ? "bg-brand-600 w-6" 
+                    ? "bg-brand-600 w-8" 
                     : "bg-gray-300 hover:bg-gray-400"
                 )}
                 aria-label={`Go to product ${index + 1}`}
+                disabled={isAnimating}
               />
             ))}
           </div>
