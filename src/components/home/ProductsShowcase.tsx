@@ -8,42 +8,94 @@ import { cn } from "@/lib/utils";
 const products = [
   {
     id: 1,
-    name: "PrimeCuro Skin Care Adult/Baby Wipes - Scented",
+    name: "PrimeCuro Skin Care Baby Wipes - Scented",
     subtitle: "Cucumber & Green Tea Fragrance",
-    description: "Gentle, skin-friendly scented wipes that are flushable and biodegradable, enriched with cucumber and green tea extracts for a refreshing clean feeling.",
+    description: "Gentle, skin-friendly scented wipes that are biodegradable and eco-friendly, enriched with cucumber and green tea extracts for a soothing clean feeling, perfect for baby's delicate skin.",
     price: "$12.99",
-    image: "/public/lovable-uploads/776ec402-b1da-483b-a4fa-3352b14528d9.png",
-    status: "available",
-    color: "bg-green-50",
-    accentColor: "text-green-700",
-    iconColor: "text-green-600",
-    badges: ["Flushable", "Biodegradable"]
-  },
-  {
-    id: 2,
-    name: "PrimeCuro Skin Care Adult/Baby Wipes - Unscented",
-    subtitle: "Sensitive Skin Formula",
-    description: "Perfect for sensitive skin, these unscented flushable wipes are gentle and effective with added moisturizers to keep skin soft and healthy.",
-    price: "$14.99",
     image: "/public/lovable-uploads/776ec402-b1da-483b-a4fa-3352b14528d9.png",
     status: "available",
     color: "bg-blue-50",
     accentColor: "text-blue-700",
     iconColor: "text-blue-600",
-    badges: ["Flushable", "For Sensitive Skin"]
+    badges: ["Biodegradable", "Eco-Friendly", "Hypoallergenic"]
+  },
+  {
+    id: 2,
+    name: "PrimeCuro Skin Care Adult/Baby Wipes - Unscented",
+    subtitle: "Sensitive Skin Formula",
+    description: "Perfect for sensitive skin, these unscented wipes are biodegradable, eco-friendly, and hypoallergenic with added moisturizers to keep skin soft and healthy.",
+    price: "$14.99",
+    image: "/public/lovable-uploads/776ec402-b1da-483b-a4fa-3352b14528d9.png",
+    status: "available",
+    color: "bg-indigo-50",
+    accentColor: "text-indigo-700",
+    iconColor: "text-indigo-600",
+    badges: ["Biodegradable", "For Sensitive Skin", "Hypoallergenic"]
   },
   {
     id: 3,
-    name: "PrimeCuro Disinfecting Wipes",
-    subtitle: "Lemon & Air Fresh Fragrances",
-    description: "Coming soon - Our powerful disinfectant wipes kill 99.9% of germs and bacteria. Available in refreshing Lemon and Air Fresh scents.",
+    name: "PrimeCuro Flushable Adult Wipes - Scented",
+    subtitle: "Green Tea & Cucumber Fragrance",
+    description: "Eco-friendly flushable wipes with a refreshing green tea and cucumber scent, perfect for adults seeking comfort and cleanliness with reduced environmental impact.",
+    price: "$13.99",
+    image: "/public/lovable-uploads/776ec402-b1da-483b-a4fa-3352b14528d9.png",
+    status: "available",
+    color: "bg-teal-50",
+    accentColor: "text-teal-700",
+    iconColor: "text-teal-600",
+    badges: ["Flushable", "Biodegradable", "Eco-Friendly"]
+  },
+  {
+    id: 4,
+    name: "PrimeCuro Disinfecting Wipes - Lemon Scented",
+    subtitle: "Powerful Cleaning Formula",
+    description: "Coming soon - Our powerful disinfectant wipes kill 99.9% of germs and bacteria with a refreshing lemon scent, perfect for household surfaces.",
     price: "$15.99",
     image: "/public/lovable-uploads/1c14f5dd-90f5-4be3-893b-e437e0965fa3.png",
     status: "coming-soon",
     color: "bg-amber-50",
     accentColor: "text-amber-700",
     iconColor: "text-amber-600",
-    badges: ["Kills 99.9% Germs", "Multi-Surface"]
+    badges: ["Kills 99.9% Germs", "Multi-Surface", "Eco-Friendly"]
+  },
+  {
+    id: 5,
+    name: "PrimeCuro Disinfecting Wipes - Fresh Fragrance",
+    subtitle: "Ocean Breeze Scent",
+    description: "Coming soon - Experience the clean, crisp scent of ocean breeze with our powerful disinfecting wipes that eliminate 99.9% of germs while being gentle on surfaces.",
+    price: "$15.99",
+    image: "/public/lovable-uploads/1c14f5dd-90f5-4be3-893b-e437e0965fa3.png",
+    status: "coming-soon",
+    color: "bg-cyan-50",
+    accentColor: "text-cyan-700",
+    iconColor: "text-cyan-600",
+    badges: ["Kills 99.9% Germs", "Multi-Surface", "Eco-Friendly"]
+  },
+  {
+    id: 6,
+    name: "PrimeCuro Hand Wipes - On The Go",
+    subtitle: "Portable Clean Anytime",
+    description: "Coming soon - Convenient, pocket-sized biodegradable hand wipes perfect for travel, office, or anywhere you need a quick refresh.",
+    price: "$8.99",
+    image: "/public/lovable-uploads/1c14f5dd-90f5-4be3-893b-e437e0965fa3.png",
+    status: "coming-soon",
+    color: "bg-violet-50",
+    accentColor: "text-violet-700",
+    iconColor: "text-violet-600",
+    badges: ["Portable", "Biodegradable", "Quick-Drying"]
+  },
+  {
+    id: 7,
+    name: "PrimeCuro Lens Wipes - Crystal Clear",
+    subtitle: "For Glasses & Screens",
+    description: "Coming soon - Specially formulated to clean eyeglasses, sunglasses, and electronic screens without streaks or residue. Lint-free and gentle on coated lenses.",
+    price: "$7.99",
+    image: "/public/lovable-uploads/1c14f5dd-90f5-4be3-893b-e437e0965fa3.png",
+    status: "coming-soon",
+    color: "bg-sky-50",
+    accentColor: "text-sky-700",
+    iconColor: "text-sky-600",
+    badges: ["Streak-Free", "Anti-Static", "Lint-Free"]
   }
 ];
 
@@ -147,13 +199,13 @@ const ProductsShowcase = () => {
                   <div className="w-full md:w-1/2 p-6 md:p-12 flex flex-col items-start justify-center">
                     <div className="mb-3 flex flex-wrap items-center gap-2">
                       {product.badges.map((badge, index) => (
-                        <div key={index} className="bg-white px-3 py-1 rounded-full text-xs font-medium flex items-center">
+                        <div key={index} className="bg-white px-3 py-1 rounded-full text-xs font-medium flex items-center shadow-sm">
                           {badge}
                         </div>
                       ))}
                       
                       {product.status === "coming-soon" && (
-                        <div className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-medium flex items-center">
+                        <div className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-medium flex items-center shadow-sm">
                           <Clock className="h-3 w-3 mr-1" />
                           Coming Soon
                         </div>

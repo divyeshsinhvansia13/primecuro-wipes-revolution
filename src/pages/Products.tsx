@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import AnimatedImage from "@/components/ui/AnimatedImage";
-import { Check, Filter, X } from "lucide-react";
+import { Check, Filter, X, Clock } from "lucide-react";
 import { 
   Tabs, 
   TabsContent, 
@@ -28,6 +28,8 @@ interface Product {
   description: string;
   features: string[];
   image: string;
+  status: "available" | "coming-soon";
+  badges: string[];
 }
 
 const ProductCard = ({ product, onQuickView }: { product: Product; onQuickView: (product: Product) => void }) => {
@@ -37,11 +39,18 @@ const ProductCard = ({ product, onQuickView }: { product: Product; onQuickView: 
         <AnimatedImage 
           src={product.image} 
           alt={product.name}
-          className="w-full h-64 object-cover transform transition-transform group-hover:scale-105 duration-500"
+          className={`w-full h-64 object-cover transform transition-transform group-hover:scale-105 duration-500 ${product.status === "coming-soon" ? "blur-[1px] opacity-90" : ""}`}
         />
+        {product.status === "coming-soon" && (
+          <div className="absolute top-3 right-3 bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-medium flex items-center shadow-sm">
+            <Clock className="h-3 w-3 mr-1" />
+            Coming Soon
+          </div>
+        )}
         <button
           onClick={() => onQuickView(product)}
           className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white text-gray-900 px-4 py-2 rounded-full text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity shadow-md hover:bg-gray-100"
+          disabled={product.status === "coming-soon"}
         >
           Quick View
         </button>
@@ -52,8 +61,22 @@ const ProductCard = ({ product, onQuickView }: { product: Product; onQuickView: 
           <span className="text-brand-600 font-semibold">{product.price}</span>
         </div>
         <p className="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
-        <button className="w-full py-2 mt-2 border border-brand-600 text-brand-600 rounded-full hover:bg-brand-50 transition-colors text-sm font-medium">
-          Add to Cart
+        <div className="flex flex-wrap gap-1 mb-3">
+          {product.badges.slice(0, 2).map((badge, index) => (
+            <span key={index} className="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full">
+              {badge}
+            </span>
+          ))}
+        </div>
+        <button 
+          className={`w-full py-2 mt-2 rounded-full text-sm font-medium ${
+            product.status === "available" 
+              ? "border border-brand-600 text-brand-600 hover:bg-brand-50" 
+              : "bg-gray-100 text-gray-400 cursor-not-allowed"
+          } transition-colors`}
+          disabled={product.status === "coming-soon"}
+        >
+          {product.status === "available" ? "Add to Cart" : "Notify Me"}
         </button>
       </div>
     </div>
@@ -110,8 +133,14 @@ const ProductDetailDialog = ({
             <img 
               src={product.image} 
               alt={product.name} 
-              className="w-full h-auto rounded-lg"
+              className={`w-full h-auto rounded-lg ${product.status === "coming-soon" ? "blur-[1px] opacity-90" : ""}`}
             />
+            {product.status === "coming-soon" && (
+              <div className="mt-3 bg-amber-100 text-amber-800 px-4 py-2 rounded-lg text-sm font-medium flex items-center justify-center">
+                <Clock className="h-4 w-4 mr-2" />
+                This product is coming soon
+              </div>
+            )}
           </div>
           <div>
             <p className="text-gray-700 mb-4">{product.description}</p>
@@ -128,14 +157,28 @@ const ProductDetailDialog = ({
               </ul>
             </div>
             
-            <div className="flex gap-3">
-              <button className="flex-1 py-2 bg-brand-600 text-white rounded-full hover:bg-brand-700 transition-colors font-medium">
-                Add to Cart
-              </button>
-              <button className="px-4 py-2 border border-gray-300 rounded-full hover:bg-gray-50 transition-colors">
-                Save
-              </button>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {product.badges.map((badge, index) => (
+                <span key={index} className="text-sm bg-blue-50 text-blue-700 px-3 py-1 rounded-full">
+                  {badge}
+                </span>
+              ))}
             </div>
+            
+            {product.status === "available" ? (
+              <div className="flex gap-3">
+                <button className="flex-1 py-2 bg-brand-600 text-white rounded-full hover:bg-brand-700 transition-colors font-medium">
+                  Add to Cart
+                </button>
+                <button className="px-4 py-2 border border-gray-300 rounded-full hover:bg-gray-50 transition-colors">
+                  Save
+                </button>
+              </div>
+            ) : (
+              <button className="w-full py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors font-medium">
+                Notify Me When Available
+              </button>
+            )}
           </div>
         </div>
       </DialogContent>
@@ -153,99 +196,133 @@ const Products = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  // Sample product data
+  // Updated product data
   const products: Product[] = [
     {
       id: 1,
-      name: "Fresh Body Wipes",
+      name: "PrimeCuro Skin Care Baby Wipes - Scented",
       price: "$12.99",
       category: "personal",
-      description: "Biodegradable body wipes for a refreshing clean anytime, anywhere. Perfect for after the gym, traveling, or whenever you need a quick refresh.",
+      description: "Gentle, skin-friendly scented wipes with cucumber and green tea fragrance, perfect for baby's delicate skin. Biodegradable and eco-friendly.",
       features: [
-        "Biodegradable & compostable material",
-        "Alcohol-free formula",
-        "Suitable for sensitive skin",
-        "Light fresh scent",
-        "30 wipes per pack"
+        "Cucumber & Green Tea fragrance",
+        "Biodegradable & eco-friendly material",
+        "Gentle formula for baby's skin",
+        "Hypoallergenic and dermatologically tested",
+        "Alcohol-free and pH balanced",
+        "80 wipes per pack"
       ],
-      image: "https://images.unsplash.com/photo-1583209814683-c023dd293cc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80"
+      image: "/public/lovable-uploads/776ec402-b1da-483b-a4fa-3352b14528d9.png",
+      status: "available",
+      badges: ["Biodegradable", "Eco-Friendly", "Hypoallergenic"]
     },
     {
       id: 2,
-      name: "Facial Cleansing Wipes",
-      price: "$9.99",
+      name: "PrimeCuro Skin Care Adult/Baby Wipes - Unscented",
+      price: "$14.99",
       category: "personal",
-      description: "Gentle facial wipes that remove makeup, dirt, and oil while nourishing your skin. Formulated with aloe vera and cucumber extract.",
+      description: "Perfect for sensitive skin, these unscented wipes are biodegradable, eco-friendly, and hypoallergenic with added moisturizers to keep skin soft and healthy.",
       features: [
-        "Removes makeup and impurities",
-        "Hydrating formula with aloe vera",
-        "Fragrance-free for sensitive skin",
-        "Resealable packaging",
-        "25 wipes per pack"
+        "Fragrance-free formula",
+        "Perfect for sensitive skin",
+        "Biodegradable & eco-friendly material",
+        "Hypoallergenic and dermatologically tested",
+        "Added moisturizers for skin health",
+        "80 wipes per pack"
       ],
-      image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80"
+      image: "/public/lovable-uploads/776ec402-b1da-483b-a4fa-3352b14528d9.png",
+      status: "available",
+      badges: ["Fragrance-Free", "Sensitive Skin", "Biodegradable"]
     },
     {
       id: 3,
-      name: "Intimate Hygiene Wipes",
-      price: "$10.99",
+      name: "PrimeCuro Flushable Adult Wipes - Scented",
+      price: "$13.99",
       category: "personal",
-      description: "pH-balanced intimate wipes specially formulated for gentle cleansing. Free from harsh chemicals and irritants.",
+      description: "Eco-friendly flushable wipes with a refreshing green tea and cucumber scent, perfect for adults seeking comfort and cleanliness with reduced environmental impact.",
       features: [
-        "pH-balanced formula",
-        "Gynecologist tested",
-        "Hypoallergenic",
-        "100% biodegradable",
-        "Individually wrapped for convenience",
-        "20 wipes per pack"
+        "Green Tea & Cucumber fragrance",
+        "Flushable and septic-safe",
+        "Biodegradable & eco-friendly material",
+        "Hypoallergenic and dermatologically tested",
+        "Perfect for travel and on-the-go",
+        "60 wipes per pack"
       ],
-      image: "https://images.unsplash.com/photo-1615900119312-2acd3a71f3aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80"
+      image: "/public/lovable-uploads/776ec402-b1da-483b-a4fa-3352b14528d9.png",
+      status: "available",
+      badges: ["Flushable", "Biodegradable", "Septic-Safe"]
     },
     {
       id: 4,
-      name: "Kitchen Surface Wipes",
-      price: "$13.99",
+      name: "PrimeCuro Disinfecting Wipes - Lemon Scented",
+      price: "$15.99",
       category: "household",
-      description: "Heavy-duty kitchen wipes that cut through grease and grime while being safe for food-contact surfaces.",
+      description: "Our powerful disinfectant wipes kill 99.9% of germs and bacteria with a refreshing lemon scent, perfect for household surfaces and everyday cleaning needs.",
       features: [
-        "Powerful cleaning formula",
-        "Safe for food-contact surfaces",
-        "Biodegradable material",
-        "Textured for better scrubbing",
+        "Kills 99.9% of germs and bacteria",
         "Fresh lemon scent",
-        "40 wipes per pack"
+        "Safe for most household surfaces",
+        "Biodegradable & eco-friendly material",
+        "No harsh chemicals",
+        "75 wipes per pack"
       ],
-      image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+      image: "/public/lovable-uploads/1c14f5dd-90f5-4be3-893b-e437e0965fa3.png",
+      status: "coming-soon",
+      badges: ["Kills 99.9% Germs", "Multi-Surface", "Eco-Friendly"]
     },
     {
       id: 5,
-      name: "Bathroom Cleaning Wipes",
-      price: "$11.99",
+      name: "PrimeCuro Disinfecting Wipes - Fresh Fragrance",
+      price: "$15.99",
       category: "household",
-      description: "Effective bathroom wipes that remove soap scum, hard water stains, and bacteria from all bathroom surfaces.",
+      description: "Experience the clean, crisp scent of ocean breeze with our powerful disinfecting wipes that eliminate 99.9% of germs while being gentle on surfaces.",
       features: [
-        "Kills 99.9% of bacteria",
-        "Removes soap scum and water spots",
-        "Safe for most bathroom surfaces",
-        "Fresh clean scent",
-        "35 wipes per pack"
+        "Kills 99.9% of germs and bacteria",
+        "Ocean breeze fresh scent",
+        "Safe for most household surfaces",
+        "Biodegradable & eco-friendly material",
+        "No harsh chemicals",
+        "75 wipes per pack"
       ],
-      image: "https://images.unsplash.com/photo-1584813470613-5b1c1cad3a69?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+      image: "/public/lovable-uploads/1c14f5dd-90f5-4be3-893b-e437e0965fa3.png",
+      status: "coming-soon",
+      badges: ["Kills 99.9% Germs", "Multi-Surface", "Eco-Friendly"]
     },
     {
       id: 6,
-      name: "Glass & Mirror Wipes",
+      name: "PrimeCuro Hand Wipes - On The Go",
       price: "$8.99",
       category: "household",
-      description: "Streak-free glass cleaning wipes that leave windows, mirrors, and glass surfaces crystal clear.",
+      description: "Convenient, pocket-sized biodegradable hand wipes perfect for travel, office, or anywhere you need a quick refresh.",
+      features: [
+        "Portable and convenient size",
+        "Gentle yet effective cleansing",
+        "Quick-drying formula",
+        "Biodegradable & eco-friendly material",
+        "Light, fresh scent",
+        "20 individually wrapped wipes"
+      ],
+      image: "/public/lovable-uploads/1c14f5dd-90f5-4be3-893b-e437e0965fa3.png",
+      status: "coming-soon",
+      badges: ["Portable", "Biodegradable", "Quick-Drying"]
+    },
+    {
+      id: 7,
+      name: "PrimeCuro Lens Wipes - Crystal Clear",
+      price: "$7.99",
+      category: "household",
+      description: "Specially formulated to clean eyeglasses, sunglasses, and electronic screens without streaks or residue. Lint-free and gentle on coated lenses.",
       features: [
         "Streak-free formula",
-        "Ammonia-free",
-        "Works on multiple surfaces",
-        "Quick-drying",
-        "30 wipes per pack"
+        "Safe for all lens coatings",
+        "Anti-static properties",
+        "Lint-free cleaning",
+        "Perfect for glasses and screens",
+        "30 individually wrapped wipes"
       ],
-      image: "https://images.unsplash.com/photo-1585421514284-efb74320d393?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+      image: "/public/lovable-uploads/1c14f5dd-90f5-4be3-893b-e437e0965fa3.png",
+      status: "coming-soon",
+      badges: ["Streak-Free", "Anti-Static", "Lint-Free"]
     }
   ];
 
@@ -253,7 +330,8 @@ const Products = () => {
     { id: "biodegradable", label: "Biodegradable" },
     { id: "fragrance-free", label: "Fragrance-Free" },
     { id: "sensitive-skin", label: "Sensitive Skin" },
-    { id: "eco-friendly", label: "Eco-Friendly" }
+    { id: "eco-friendly", label: "Eco-Friendly" },
+    { id: "hypoallergenic", label: "Hypoallergenic" }
   ];
 
   const handleCategoryChange = (category: string) => {
@@ -287,7 +365,15 @@ const Products = () => {
       return false;
     }
     
-    // For demo purposes, we're not applying detailed filter logic
+    // For demo purposes, we're implementing a simple filter logic based on badges
+    if (activeFilters.length > 0) {
+      return activeFilters.some(filter => 
+        product.badges.some(badge => 
+          badge.toLowerCase().includes(filter.toLowerCase())
+        )
+      );
+    }
+    
     return true;
   });
 
@@ -296,14 +382,14 @@ const Products = () => {
       <Navbar />
       <main className="flex-grow pt-24">
         {/* Hero Section */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-blue-50">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <span className="inline-block px-3 py-1 text-xs font-semibold bg-brand-100 text-brand-800 rounded-full mb-3">
                 OUR PRODUCTS
               </span>
               <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
-                Innovative Cleaning Solutions
+                Premium Care Solutions
               </h1>
               <p className="text-lg text-gray-600 mb-8">
                 Discover our range of premium wipes designed for effectiveness, convenience, and sustainability. From personal care to household cleaning, we've got you covered.
@@ -393,103 +479,68 @@ const Products = () => {
         </section>
         
         {/* Features Section */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-blue-50">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center mb-12">
               <span className="inline-block px-3 py-1 text-xs font-semibold bg-brand-100 text-brand-800 rounded-full mb-3">
                 WHY CHOOSE PRIMECURO
               </span>
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                The PrimeCuro Difference
+                What Makes Us Different
               </h2>
               <p className="text-lg text-gray-600">
-                What sets our products apart from the competition.
+                Our commitment to quality, sustainability, and innovation sets us apart.
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <div className="text-center p-6">
-                <div className="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-brand-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zm7-10a1 1 0 01.707.293l.707.707L15.414 4a1 1 0 01-1.414 1.414l-3-3A1 1 0 0112 2zm0 10a1 1 0 01.707.293l.707.707 1.414-1.414a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414l.707.707.707-.707A1 1 0 0112 12z" clipRule="evenodd"></path></svg>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+              <div className="text-center p-6 bg-white rounded-xl shadow-sm">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Advanced Formulations</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Eco-friendly Materials</h3>
                 <p className="text-gray-600">
-                  Our proprietary blends deliver superior cleaning power without harsh chemicals, protecting both your surfaces and your health.
+                  All our products use biodegradable materials that reduce environmental impact.
                 </p>
               </div>
               
-              <div className="text-center p-6">
-                <div className="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-brand-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clipRule="evenodd"></path></svg>
+              <div className="text-center p-6 bg-white rounded-xl shadow-sm">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                  </svg>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Eco-Friendly Materials</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Made in the USA</h3>
                 <p className="text-gray-600">
-                  Our biodegradable wipes break down naturally after use, significantly reducing environmental impact compared to traditional products.
+                  Proudly manufactured in American facilities with strict quality control.
                 </p>
               </div>
               
-              <div className="text-center p-6">
-                <div className="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-brand-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path></svg>
+              <div className="text-center p-6 bg-white rounded-xl shadow-sm">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Dermatologist Tested</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Dermatologically Tested</h3>
                 <p className="text-gray-600">
-                  All our personal care products are tested and approved by dermatologists, ensuring they're gentle on even the most sensitive skin.
+                  All products undergo rigorous testing to ensure they're gentle on skin.
                 </p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Customer Reviews Section */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <span className="inline-block px-3 py-1 text-xs font-semibold bg-brand-100 text-brand-800 rounded-full mb-3">
-                TESTIMONIALS
-              </span>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                What Our Customers Say
-              </h2>
-              <p className="text-lg text-gray-600">
-                Don't just take our word for it—see what people who use our products every day have to say.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {[
-                {
-                  content: "I've tried countless wipes, but PrimeCuro's body wipes are by far the best. They're gentle yet effective, and I love that they're biodegradable.",
-                  author: "Jessica T.",
-                  title: "Fitness Instructor"
-                },
-                {
-                  content: "The kitchen surface wipes cut through grease better than anything I've used before, and without that harsh chemical smell. They're now a staple in my cleaning routine.",
-                  author: "Michael L.",
-                  title: "Home Chef"
-                },
-                {
-                  content: "As someone with sensitive skin, finding facial wipes that don't cause irritation has been a challenge. PrimeCuro's facial cleansing wipes are a game-changer—effective yet gentle.",
-                  author: "Sophia R.",
-                  title: "Skincare Enthusiast"
-                }
-              ].map((review, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
-                  <div className="flex items-center text-yellow-400 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                    ))}
-                  </div>
-                  <p className="text-gray-700 italic mb-4">"{review.content}"</p>
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 bg-gray-200 rounded-full mr-3"></div>
-                    <div>
-                      <p className="font-semibold text-gray-900">{review.author}</p>
-                      <p className="text-sm text-gray-600">{review.title}</p>
-                    </div>
-                  </div>
+              
+              <div className="text-center p-6 bg-white rounded-xl shadow-sm">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
                 </div>
-              ))}
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Cruelty-Free & Vegan</h3>
+                <p className="text-gray-600">
+                  We never test on animals and use only vegan ingredients in our formulations.
+                </p>
+              </div>
             </div>
           </div>
         </section>
