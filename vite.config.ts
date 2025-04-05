@@ -20,3 +20,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
 }));
+export default defineConfig({
+  base: "/", // OR "./" if needed for relative paths
+  plugins: [react()],
+})
