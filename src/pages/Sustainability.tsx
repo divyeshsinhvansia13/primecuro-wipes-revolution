@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import AnimatedImage from "@/components/ui/AnimatedImage";
-import { Leaf, Recycle, Award, BarChart3, Globe, Filter } from "lucide-react";
+import { Leaf, Recycle, Award, BarChart3, Globe, Filter, Droplet, MapPin, Heart } from "lucide-react";
 
 const SustainabilityFeature = ({ 
   icon, 
@@ -86,6 +86,30 @@ const ProgressStep = ({
       </div>
       <h3 className="text-lg font-bold text-gray-900 mb-1">{title}</h3>
       <p className="text-gray-600">{description}</p>
+    </div>
+  );
+};
+
+const SustainablePracticeCard = ({ 
+  icon, 
+  title, 
+  description 
+}: { 
+  icon: React.ReactNode; 
+  title: string; 
+  description: string;
+}) => {
+  return (
+    <div className="flex items-start p-5 bg-white rounded-lg shadow-sm">
+      <div className="mr-4 mt-1">
+        <div className="w-12 h-12 flex items-center justify-center rounded-full bg-green-100 text-green-700">
+          {icon}
+        </div>
+      </div>
+      <div>
+        <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
+        <p className="text-gray-600">{description}</p>
+      </div>
     </div>
   );
 };
@@ -295,38 +319,57 @@ const Sustainability = () => {
           </div>
         </section>
 
-        {/* Partnerships Section */}
+        {/* Our Sustainable Practices Section */}
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center mb-12">
-              <span className="inline-block px-3 py-1 text-xs font-semibold bg-brand-100 text-brand-800 rounded-full mb-3">
-                PARTNERSHIPS
+              <span className="inline-block px-3 py-1 text-xs font-semibold bg-green-100 text-green-800 rounded-full mb-3">
+                OUR COMMITMENT
               </span>
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Working Together for Change
+                Our Sustainable Practices
               </h2>
               <p className="text-lg text-gray-600">
-                We collaborate with leading environmental organizations to amplify our positive impact.
+                These are the concrete ways we're working to minimize our environmental footprint while maximizing product effectiveness.
               </p>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {[1, 2, 3, 4].map((item) => (
-                <div key={item} className="flex items-center justify-center p-6 bg-white rounded-lg shadow-sm">
-                  <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center">
-                    <span className="text-gray-500 text-xs">Partner Logo</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            <div className="mt-12 text-center">
-              <p className="text-gray-600 mb-6">
-                Interested in partnering with us on sustainability initiatives?
-              </p>
-              <button className="px-6 py-3 bg-brand-600 text-white font-medium rounded-full hover:bg-brand-700 transition-colors">
-                Contact Our Sustainability Team
-              </button>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              <SustainablePracticeCard 
+                icon={<Leaf className="w-6 h-6" />}
+                title="100% Biodegradable Wipes"
+                description="Our wipes are made from plant-based fibers that completely break down within 6 months in proper composting conditions, leaving no microplastics behind."
+              />
+              
+              <SustainablePracticeCard 
+                icon={<Recycle className="w-6 h-6" />}
+                title="Recyclable Packaging"
+                description="All our packaging is made from recycled materials and designed to be easily recyclable in standard municipal recycling programs."
+              />
+              
+              <SustainablePracticeCard 
+                icon={<Droplet className="w-6 h-6" />}
+                title="Water-Based, Alcohol-Free Formulas"
+                description="Our gentle formulations are water-based and alcohol-free, making them safer for the environment and gentler on sensitive skin."
+              />
+              
+              <SustainablePracticeCard 
+                icon={<MapPin className="w-6 h-6" />}
+                title="Local Sourcing"
+                description="We source materials locally whenever possible to reduce transportation emissions and support local economies."
+              />
+              
+              <SustainablePracticeCard 
+                icon={<Globe className="w-6 h-6" />}
+                title="Carbon Offset Program"
+                description="We measure our carbon footprint and invest in verified carbon offset projects that help neutralize our environmental impact."
+              />
+              
+              <SustainablePracticeCard 
+                icon={<Heart className="w-6 h-6" />}
+                title="Environmental Responsibility"
+                description="We're committed to continuous improvement in our environmental practices and transparent reporting of our sustainability progress."
+              />
             </div>
           </div>
         </section>

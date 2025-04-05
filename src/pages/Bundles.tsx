@@ -79,7 +79,7 @@ const Bundles = () => {
                 Save More With Our Value Bundles
               </h1>
               <p className="text-lg text-gray-600 mb-8">
-                Get more of your favorite wipes at a better price. Our carefully curated bundles offer the perfect combination of products for your specific needs.
+                Get more of your favorite PrimeCuro products at a better price. Our carefully curated bundles offer the perfect combination for your specific needs.
               </p>
             </div>
           </div>
@@ -92,49 +92,48 @@ const Bundles = () => {
               <div className="flex justify-center mb-8">
                 <TabsList className="grid grid-cols-2 w-full max-w-md">
                   <TabsTrigger value="personal">Personal Care</TabsTrigger>
-                  <TabsTrigger value="household">Household</TabsTrigger>
+                  <TabsTrigger value="household">Family Bundles</TabsTrigger>
                 </TabsList>
               </div>
               
               <TabsContent value="personal" className="space-y-12">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <BundlePlan 
-                    title="Essential Bundle" 
-                    price="$29.99" 
+                    title="Buy 2, Get 1 Free" 
+                    price="$32.99" 
                     description="Perfect starter pack for personal hygiene."
                     features={[
-                      "3 packs of Body Wipes",
-                      "2 packs of Face Wipes",
+                      "Mix and match any three PrimeCuro products",
+                      "Get the lowest priced item for free",
                       "Free shipping",
                       "One-time purchase"
                     ]}
                   />
                   
                   <BundlePlan 
-                    title="Premium Bundle" 
+                    title="Family Essentials" 
                     price="$49.99" 
                     description="Our most comprehensive personal care package."
                     features={[
-                      "4 packs of Body Wipes",
-                      "3 packs of Face Wipes",
-                      "2 packs of Intimate Wipes",
+                      "2 packs of Baby Wipes (Scented)",
+                      "2 packs of Adult/Baby Wipes (Unscented)",
+                      "2 packs of Flushable Adult Wipes",
                       "Free shipping",
-                      "15% savings compared to individual purchases"
+                      "20% savings compared to individual purchases"
                     ]}
                     isPopular={true}
                     variant="premium"
                   />
                   
                   <BundlePlan 
-                    title="Travel Bundle" 
+                    title="Mix & Match Pack" 
                     price="$39.99" 
-                    description="Stay fresh wherever your journey takes you."
+                    description="Create your perfect combination."
                     features={[
-                      "3 packs of Travel Body Wipes",
-                      "3 packs of Travel Face Wipes",
-                      "1 Compact Carrying Case",
+                      "Choose any 4 packs of PrimeCuro wipes",
+                      "Customize to your specific needs",
                       "Free shipping",
-                      "Perfect for on-the-go"
+                      "15% discount on total price"
                     ]}
                   />
                 </div>
@@ -178,44 +177,43 @@ const Bundles = () => {
               <TabsContent value="household" className="space-y-12">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <BundlePlan 
-                    title="Home Essential" 
-                    price="$34.99" 
-                    description="Keep your home clean and fresh."
+                    title="Home & Baby Combo" 
+                    price="$45.99" 
+                    description="Perfect for families with little ones."
                     features={[
-                      "3 packs of Kitchen Wipes",
-                      "2 packs of Bathroom Wipes",
-                      "1 pack of Glass & Surface Wipes",
+                      "3 packs of Baby Wipes (Scented)",
+                      "2 packs of Adult/Baby Wipes (Unscented)",
+                      "1 pack of Flushable Adult Wipes",
                       "Free shipping",
-                      "10% savings compared to individual purchases"
+                      "15% savings compared to individual purchases"
                     ]}
                   />
                   
                   <BundlePlan 
-                    title="Complete Home" 
+                    title="Complete Home Bundle" 
                     price="$59.99" 
-                    description="Our comprehensive home cleaning solution."
+                    description="Everything you need for a clean, fresh home."
                     features={[
-                      "4 packs of Kitchen Wipes",
-                      "3 packs of Bathroom Wipes",
-                      "3 packs of Glass & Surface Wipes",
-                      "2 packs of Floor Wipes",
-                      "Free shipping",
-                      "20% savings compared to individual purchases"
+                      "2 packs of Baby Wipes (Scented)",
+                      "2 packs of Adult/Baby Wipes (Unscented)",
+                      "2 packs of Flushable Adult Wipes",
+                      "Free shipping + Gift with purchase",
+                      "25% savings compared to individual purchases"
                     ]}
                     isPopular={true}
                     variant="premium"
                   />
                   
                   <BundlePlan 
-                    title="Pet Owner's Bundle" 
-                    price="$44.99" 
-                    description="Specially formulated for homes with pets."
+                    title="Family Variety Pack" 
+                    price="$49.99" 
+                    description="A variety of wipes for all your family's needs."
                     features={[
-                      "3 packs of Pet-Safe Surface Wipes",
-                      "2 packs of Odor Eliminating Wipes",
-                      "2 packs of Pet Grooming Wipes",
+                      "2 packs of Baby Wipes (Scented)",
+                      "2 packs of Adult/Baby Wipes (Unscented)",
+                      "2 packs of Flushable Adult Wipes",
                       "Free shipping",
-                      "Pet-friendly formulations"
+                      "20% savings compared to individual purchases"
                     ]}
                   />
                 </div>
