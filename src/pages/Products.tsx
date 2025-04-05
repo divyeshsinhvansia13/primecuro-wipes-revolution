@@ -212,7 +212,7 @@ const Products = () => {
         "Alcohol-free and pH balanced",
         "80 wipes per pack"
       ],
-      image: "https://images.unsplash.com/photo-1594824486598-a1256be16e47?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
       status: "available",
       badges: ["Biodegradable", "Eco-Friendly", "Hypoallergenic"]
     },
@@ -230,7 +230,7 @@ const Products = () => {
         "Added moisturizers for skin health",
         "80 wipes per pack"
       ],
-      image: "https://images.unsplash.com/photo-1628531518346-7f526e4de0b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
       status: "available",
       badges: ["Fragrance-Free", "Sensitive Skin", "Biodegradable"]
     },
@@ -248,7 +248,7 @@ const Products = () => {
         "Perfect for travel and on-the-go",
         "60 wipes per pack"
       ],
-      image: "https://images.unsplash.com/photo-1532413992378-f169ac26fff0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
       status: "available",
       badges: ["Flushable", "Biodegradable", "Septic-Safe"]
     },
@@ -266,7 +266,7 @@ const Products = () => {
         "No harsh chemicals",
         "75 wipes per pack"
       ],
-      image: "https://images.unsplash.com/photo-1587049352851-8d4e89133924?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
       status: "coming-soon",
       badges: ["Kills 99.9% Germs", "Multi-Surface", "Eco-Friendly"]
     },
@@ -284,7 +284,7 @@ const Products = () => {
         "No harsh chemicals",
         "75 wipes per pack"
       ],
-      image: "https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
       status: "coming-soon",
       badges: ["Kills 99.9% Germs", "Multi-Surface", "Eco-Friendly"]
     },
@@ -302,7 +302,7 @@ const Products = () => {
         "Light, fresh scent",
         "20 individually wrapped wipes"
       ],
-      image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
       status: "coming-soon",
       badges: ["Portable", "Biodegradable", "Quick-Drying"]
     },
@@ -320,7 +320,7 @@ const Products = () => {
         "Perfect for glasses and screens",
         "30 individually wrapped wipes"
       ],
-      image: "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
       status: "coming-soon",
       badges: ["Streak-Free", "Anti-Static", "Lint-Free"]
     }
