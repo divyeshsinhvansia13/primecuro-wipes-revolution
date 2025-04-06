@@ -23,13 +23,13 @@ const CTAButton = React.forwardRef<HTMLButtonElement, CTAButtonProps>(
     }, 
     ref
   ) => {
-    const baseStyles = "font-medium inline-flex items-center justify-center rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-brand-300 focus:ring-offset-2";
+    const baseStyles = "group font-medium inline-flex items-center justify-center rounded-full transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-brand-300 focus:ring-offset-2";
     
     const variants = {
-      primary: "bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800 shadow-sm",
-      secondary: "bg-brand-100 text-brand-700 hover:bg-brand-200 active:bg-brand-300",
-      outline: "border border-brand-200 hover:bg-brand-50 text-brand-700",
-      ghost: "text-brand-600 hover:bg-brand-50 hover:text-brand-700"
+      primary: "bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800 shadow-sm hover:shadow-md transform hover:-translate-y-0.5",
+      secondary: "bg-brand-100 text-brand-700 hover:bg-brand-200 active:bg-brand-300 hover:shadow-sm transform hover:-translate-y-0.5",
+      outline: "border border-brand-200 hover:bg-brand-50 text-brand-700 hover:shadow-sm transform hover:-translate-y-0.5",
+      ghost: "text-brand-600 hover:bg-brand-50 hover:text-brand-700 transform hover:-translate-y-0.5"
     };
     
     const sizes = {
@@ -53,7 +53,7 @@ const CTAButton = React.forwardRef<HTMLButtonElement, CTAButtonProps>(
         {icon && (
           <ArrowRight 
             className={cn(
-              "ml-2 transition-transform group-hover:translate-x-1",
+              "ml-2 transition-transform duration-300 group-hover:translate-x-1",
               size === "sm" ? "h-4 w-4" : size === "md" ? "h-5 w-5" : "h-6 w-6"
             )}
           />

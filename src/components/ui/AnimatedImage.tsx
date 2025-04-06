@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 interface AnimatedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   delay?: number;
   blur?: boolean;
+  parallax?: boolean;
 }
 
 const AnimatedImage = ({ 
@@ -13,11 +14,13 @@ const AnimatedImage = ({
   className, 
   delay = 0, 
   blur = true,
+  parallax = false,
   ...props 
 }: AnimatedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -37,6 +40,23 @@ const AnimatedImage = ({
     return () => observer.disconnect();
   }, []);
   
+  useEffect(() => {
+    if (!parallax || !containerRef.current) return;
+    
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const elementPosition = containerRef.current?.getBoundingClientRect().top || 0;
+      const offset = scrollPosition * 0.2;
+      
+      if (containerRef.current) {
+        containerRef.current.style.transform = `translateY(${offset}px)`;
+      }
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [parallax]);
+  
   const handleLoad = () => {
     setTimeout(() => {
       setIsLoaded(true);
@@ -44,7 +64,7 @@ const AnimatedImage = ({
   };
   
   return (
-    <div className="relative overflow-hidden">
+    <div ref={containerRef} className="relative overflow-hidden">
       {blur && !isLoaded && isInView && (
         <div 
           className="absolute inset-0 bg-gray-100 animate-pulse"
