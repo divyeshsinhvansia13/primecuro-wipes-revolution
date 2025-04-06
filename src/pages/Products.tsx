@@ -1,11 +1,10 @@
-
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import NewsletterSignup from "@/components/shared/NewsletterSignup";
+import CustomNewsletter from "@/components/shared/CustomNewsletter";
 import ProductFilter from "@/components/products/ProductFilter";
-import { Star, Star, ShoppingBag, Heart } from "lucide-react";
+import { Star, ShoppingBag, Heart } from "lucide-react";
 
 // Dummy product data
 const allProducts = [
@@ -315,7 +314,7 @@ const Products = () => {
         </section>
         
         {/* Newsletter Signup */}
-        <NewsletterSignup />
+        <CustomNewsletter />
       </main>
       <Footer />
     </div>

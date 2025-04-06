@@ -1,9 +1,10 @@
+
 import React, { useState } from "react";
 import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 
-const NewsletterSignup = () => {
+const CustomNewsletter = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   
@@ -66,4 +67,4 @@ const NewsletterSignup = () => {
   );
 };
 
-export default NewsletterSignup;
+export default CustomNewsletter;
