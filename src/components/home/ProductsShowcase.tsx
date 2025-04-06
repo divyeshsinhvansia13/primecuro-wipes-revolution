@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronRight, ChevronLeft, Clock } from "lucide-react";
 import AnimatedImage from "@/components/ui/AnimatedImage";
@@ -12,7 +11,7 @@ const products = [
     subtitle: "Cucumber & Green Tea Fragrance",
     description: "Gentle, skin-friendly scented wipes that are biodegradable and eco-friendly, enriched with cucumber and green tea extracts for a soothing clean feeling, perfect for baby's delicate skin.",
     price: "$12.99",
-    image: "https://images.unsplash.com/photo-1594033580867-40487b2db5bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "https://m.media-amazon.com/images/I/71TL2xtJf5L._AC_SL1500_.jpg",
     status: "available",
     color: "bg-blue-50",
     accentColor: "text-blue-700",
@@ -25,7 +24,7 @@ const products = [
     subtitle: "Sensitive Skin Formula",
     description: "Perfect for sensitive skin, these unscented wipes are biodegradable, eco-friendly, and hypoallergenic with added moisturizers to keep skin soft and healthy.",
     price: "$14.99",
-    image: "https://images.unsplash.com/photo-1605100804673-ffa2c4135faa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "https://m.media-amazon.com/images/I/71WCEPRsYhL._AC_SL1500_.jpg",
     status: "available",
     color: "bg-indigo-50",
     accentColor: "text-indigo-700",
@@ -38,7 +37,7 @@ const products = [
     subtitle: "Green Tea & Cucumber Fragrance",
     description: "Eco-friendly flushable wipes with a refreshing green tea and cucumber scent, perfect for adults seeking comfort and cleanliness with reduced environmental impact.",
     price: "$13.99",
-    image: "https://images.unsplash.com/photo-1583335940878-5271c7b7e449?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "https://m.media-amazon.com/images/I/81rFQtUNDTL._AC_SL1500_.jpg",
     status: "available",
     color: "bg-teal-50",
     accentColor: "text-teal-700",
@@ -51,7 +50,7 @@ const products = [
     subtitle: "Powerful Cleaning Formula",
     description: "Coming soon - Our powerful disinfectant wipes kill 99.9% of germs and bacteria with a refreshing lemon scent, perfect for household surfaces.",
     price: "$15.99",
-    image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d03a6b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "https://m.media-amazon.com/images/I/71WJJQQs9sL._AC_SL1500_.jpg",
     status: "coming-soon",
     color: "bg-amber-50",
     accentColor: "text-amber-700",
@@ -64,7 +63,7 @@ const products = [
     subtitle: "Ocean Breeze Scent",
     description: "Coming soon - Experience the clean, crisp scent of ocean breeze with our powerful disinfecting wipes that eliminate 99.9% of germs while being gentle on surfaces.",
     price: "$15.99",
-    image: "https://images.unsplash.com/photo-1616321589084-c648ef89e6cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+    image: "https://m.media-amazon.com/images/I/61aQoFAyQRL._AC_SL1200_.jpg",
     status: "coming-soon",
     color: "bg-cyan-50",
     accentColor: "text-cyan-700",
@@ -77,7 +76,7 @@ const products = [
     subtitle: "Portable Clean Anytime",
     description: "Coming soon - Convenient, pocket-sized biodegradable hand wipes perfect for travel, office, or anywhere you need a quick refresh.",
     price: "$8.99",
-    image: "https://images.unsplash.com/photo-1589411454940-67a017535ecf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "https://m.media-amazon.com/images/I/81T9rBLJvOL._AC_SL1500_.jpg",
     status: "coming-soon",
     color: "bg-violet-50",
     accentColor: "text-violet-700",
@@ -90,7 +89,7 @@ const products = [
     subtitle: "For Glasses & Screens",
     description: "Coming soon - Specially formulated to clean eyeglasses, sunglasses, and electronic screens without streaks or residue. Lint-free and gentle on coated lenses.",
     price: "$7.99",
-    image: "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "https://m.media-amazon.com/images/I/71Jcy8sPExL._AC_SL1500_.jpg",
     status: "coming-soon",
     color: "bg-sky-50",
     accentColor: "text-sky-700",
@@ -134,13 +133,11 @@ const ProductsShowcase = () => {
   }, [isAnimating]);
 
   useEffect(() => {
-    // Set up auto-scrolling
     autoScrollInterval.current = window.setInterval(() => {
       nextSlide();
-    }, 5000); // Change slide every 5 seconds
+    }, 5000);
     
     return () => {
-      // Clean up interval on component unmount
       if (autoScrollInterval.current !== null) {
         clearInterval(autoScrollInterval.current);
       }
@@ -155,7 +152,6 @@ const ProductsShowcase = () => {
   const handleManualNavigation = (index: number) => {
     if (isAnimating) return;
     
-    // Reset auto-scroll timer when manually navigating
     if (autoScrollInterval.current !== null) {
       clearInterval(autoScrollInterval.current);
       autoScrollInterval.current = window.setInterval(() => {

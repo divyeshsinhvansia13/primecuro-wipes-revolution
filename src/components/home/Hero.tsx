@@ -33,12 +33,41 @@ const Hero = () => {
     
     // Ensure video plays
     if (videoRef.current) {
-      videoRef.current.play().catch(err => {
-        console.error("Video playback failed:", err);
-      });
+      // Using load() before play() to ensure video is properly loaded first
+      videoRef.current.load();
+      
+      // Create a promise to handle autoplay
+      const playPromise = videoRef.current.play();
+      
+      // Handle potential promise rejection due to autoplay restrictions
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.error("Video playback failed:", error);
+          
+          // Listen for user interaction to try playing again
+          const tryPlayVideo = () => {
+            if (videoRef.current) {
+              videoRef.current.play()
+                .then(() => {
+                  // Remove event listeners once video plays
+                  document.removeEventListener('click', tryPlayVideo);
+                  document.removeEventListener('touchstart', tryPlayVideo);
+                })
+                .catch(e => console.error("Video play attempt failed:", e));
+            }
+          };
+          
+          document.addEventListener('click', tryPlayVideo);
+          document.addEventListener('touchstart', tryPlayVideo);
+        });
+      }
     }
     
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener('click', () => {});
+      document.removeEventListener('touchstart', () => {});
+    };
   }, []);
   
   const scrollToContent = () => {
@@ -58,10 +87,11 @@ const Hero = () => {
           muted
           loop
           playsInline
+          preload="auto"
           className="w-full h-full object-cover"
         >
           <source 
-            src="https://player.vimeo.com/progressive_redirect/playback/688183774/rendition/720p/file.mp4?loc=external&oauth2_token_id=57447761&signature=f3ec528b6cc1abee3dab1ef09bb8185a6c61b1fbc85c5ccdd6eeb4cb25fe6efd" 
+            src="https://dudewipes.com/cdn/shop/files/Dude_Wipes_Single.mp4?v=1613578820" 
             type="video/mp4" 
           />
           Your browser does not support the video tag.

@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -18,7 +17,7 @@ const bundleProducts = [
     description: 'Gentle, skin-friendly scented wipes that are biodegradable and eco-friendly.',
     price: 12.99,
     discount: 3.00,
-    image: 'https://images.unsplash.com/photo-1594033580867-40487b2db5bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    image: 'https://m.media-amazon.com/images/I/71TL2xtJf5L._AC_SL1500_.jpg',
     remaining: 7
   },
   {
@@ -27,7 +26,7 @@ const bundleProducts = [
     description: 'One of each: Baby Wipes, Adult Wipes, and Flushable Wipes at a special bundle price.',
     price: 34.99,
     discount: 8.75,
-    image: 'https://images.unsplash.com/photo-1605100804673-ffa2c4135faa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    image: 'https://m.media-amazon.com/images/I/71WCEPRsYhL._AC_SL1500_.jpg',
     remaining: 5
   },
   {
@@ -36,7 +35,7 @@ const bundleProducts = [
     description: 'Get your favorite products delivered monthly and enjoy special subscriber discounts.',
     price: 29.99,
     discount: 4.50,
-    image: 'https://images.unsplash.com/photo-1583335940878-5271c7b7e449?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    image: 'https://m.media-amazon.com/images/I/81rFQtUNDTL._AC_SL1500_.jpg',
     remaining: null // Subscription plan doesn't have limited quantities
   }
 ];
