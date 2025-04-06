@@ -8,11 +8,11 @@ import { cn } from "@/lib/utils";
 const products = [
   {
     id: 1,
-    name: "PrimeCuro Skin Care Baby Wipes - Scented",
+    name: "Skin Care Baby Wipes - Scented",
     subtitle: "Cucumber & Green Tea Fragrance",
     description: "Gentle, skin-friendly scented wipes that are biodegradable and eco-friendly, enriched with cucumber and green tea extracts for a soothing clean feeling, perfect for baby's delicate skin.",
     price: "$12.99",
-    image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
+    image: "https://images.unsplash.com/photo-1594033580867-40487b2db5bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     status: "available",
     color: "bg-blue-50",
     accentColor: "text-blue-700",
@@ -21,11 +21,11 @@ const products = [
   },
   {
     id: 2,
-    name: "PrimeCuro Skin Care Adult/Baby Wipes - Unscented",
+    name: "Skin Care Adult/Baby Wipes - Unscented",
     subtitle: "Sensitive Skin Formula",
     description: "Perfect for sensitive skin, these unscented wipes are biodegradable, eco-friendly, and hypoallergenic with added moisturizers to keep skin soft and healthy.",
     price: "$14.99",
-    image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
+    image: "https://images.unsplash.com/photo-1605100804673-ffa2c4135faa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     status: "available",
     color: "bg-indigo-50",
     accentColor: "text-indigo-700",
@@ -34,11 +34,11 @@ const products = [
   },
   {
     id: 3,
-    name: "PrimeCuro Flushable Adult Wipes - Scented",
+    name: "Flushable Adult Wipes - Scented",
     subtitle: "Green Tea & Cucumber Fragrance",
     description: "Eco-friendly flushable wipes with a refreshing green tea and cucumber scent, perfect for adults seeking comfort and cleanliness with reduced environmental impact.",
     price: "$13.99",
-    image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
+    image: "https://images.unsplash.com/photo-1583335940878-5271c7b7e449?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     status: "available",
     color: "bg-teal-50",
     accentColor: "text-teal-700",
@@ -47,11 +47,11 @@ const products = [
   },
   {
     id: 4,
-    name: "PrimeCuro Disinfecting Wipes - Lemon Scented",
+    name: "Disinfecting Wipes - Lemon Scented",
     subtitle: "Powerful Cleaning Formula",
     description: "Coming soon - Our powerful disinfectant wipes kill 99.9% of germs and bacteria with a refreshing lemon scent, perfect for household surfaces.",
     price: "$15.99",
-    image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
+    image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d03a6b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     status: "coming-soon",
     color: "bg-amber-50",
     accentColor: "text-amber-700",
@@ -60,11 +60,11 @@ const products = [
   },
   {
     id: 5,
-    name: "PrimeCuro Disinfecting Wipes - Fresh Fragrance",
+    name: "Disinfecting Wipes - Fresh Fragrance",
     subtitle: "Ocean Breeze Scent",
     description: "Coming soon - Experience the clean, crisp scent of ocean breeze with our powerful disinfecting wipes that eliminate 99.9% of germs while being gentle on surfaces.",
     price: "$15.99",
-    image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
+    image: "https://images.unsplash.com/photo-1616321589084-c648ef89e6cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
     status: "coming-soon",
     color: "bg-cyan-50",
     accentColor: "text-cyan-700",
@@ -73,11 +73,11 @@ const products = [
   },
   {
     id: 6,
-    name: "PrimeCuro Hand Wipes - On The Go",
+    name: "Hand Wipes - On The Go",
     subtitle: "Portable Clean Anytime",
     description: "Coming soon - Convenient, pocket-sized biodegradable hand wipes perfect for travel, office, or anywhere you need a quick refresh.",
     price: "$8.99",
-    image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
+    image: "https://images.unsplash.com/photo-1589411454940-67a017535ecf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     status: "coming-soon",
     color: "bg-violet-50",
     accentColor: "text-violet-700",
@@ -86,11 +86,11 @@ const products = [
   },
   {
     id: 7,
-    name: "PrimeCuro Lens Wipes - Crystal Clear",
+    name: "Lens Wipes - Crystal Clear",
     subtitle: "For Glasses & Screens",
     description: "Coming soon - Specially formulated to clean eyeglasses, sunglasses, and electronic screens without streaks or residue. Lint-free and gentle on coated lenses.",
     price: "$7.99",
-    image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
+    image: "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     status: "coming-soon",
     color: "bg-sky-50",
     accentColor: "text-sky-700",
@@ -104,6 +104,7 @@ const ProductsShowcase = () => {
   const [direction, setDirection] = useState<'next' | 'prev' | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const slideRef = useRef<HTMLDivElement>(null);
+  const autoScrollInterval = useRef<number | null>(null);
   
   const nextSlide = () => {
     if (isAnimating) return;
@@ -132,9 +133,39 @@ const ProductsShowcase = () => {
     }
   }, [isAnimating]);
 
+  useEffect(() => {
+    // Set up auto-scrolling
+    autoScrollInterval.current = window.setInterval(() => {
+      nextSlide();
+    }, 5000); // Change slide every 5 seconds
+    
+    return () => {
+      // Clean up interval on component unmount
+      if (autoScrollInterval.current !== null) {
+        clearInterval(autoScrollInterval.current);
+      }
+    };
+  }, []);
+
   const handleTransitionEnd = () => {
     setIsAnimating(false);
     setDirection(null);
+  };
+
+  const handleManualNavigation = (index: number) => {
+    if (isAnimating) return;
+    
+    // Reset auto-scroll timer when manually navigating
+    if (autoScrollInterval.current !== null) {
+      clearInterval(autoScrollInterval.current);
+      autoScrollInterval.current = window.setInterval(() => {
+        nextSlide();
+      }, 5000);
+    }
+    
+    setActiveIndex(index);
+    setIsAnimating(true);
+    setDirection(index > activeIndex ? 'next' : 'prev');
   };
   
   return (
@@ -261,13 +292,7 @@ const ProductsShowcase = () => {
             {products.map((_, index) => (
               <button
                 key={index}
-                onClick={() => {
-                  if (isAnimating) return;
-                  
-                  setActiveIndex(index);
-                  setIsAnimating(true);
-                  setDirection(index > activeIndex ? 'next' : 'prev');
-                }}
+                onClick={() => handleManualNavigation(index)}
                 className={cn(
                   "w-3 h-3 rounded-full transition-all",
                   activeIndex === index 

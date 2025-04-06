@@ -10,6 +10,37 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ShoppingBag, Star, ArrowRight } from "lucide-react";
 
+// Products for bundle display
+const bundleProducts = [
+  {
+    id: '1',
+    name: 'Skin Care Baby Wipes - Scented',
+    description: 'Gentle, skin-friendly scented wipes that are biodegradable and eco-friendly.',
+    price: 12.99,
+    discount: 3.00,
+    image: 'https://images.unsplash.com/photo-1594033580867-40487b2db5bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    remaining: 7
+  },
+  {
+    id: '2',
+    name: 'Family Pack Bundle',
+    description: 'One of each: Baby Wipes, Adult Wipes, and Flushable Wipes at a special bundle price.',
+    price: 34.99,
+    discount: 8.75,
+    image: 'https://images.unsplash.com/photo-1605100804673-ffa2c4135faa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    remaining: 5
+  },
+  {
+    id: '3',
+    name: 'Subscribe & Save Plan',
+    description: 'Get your favorite products delivered monthly and enjoy special subscriber discounts.',
+    price: 29.99,
+    discount: 4.50,
+    image: 'https://images.unsplash.com/photo-1583335940878-5271c7b7e449?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    remaining: null // Subscription plan doesn't have limited quantities
+  }
+];
+
 const Index = () => {
   useEffect(() => {
     // Scroll to top on component mount
@@ -31,7 +62,7 @@ const Index = () => {
                 WHY CHOOSE US
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                What Makes PrimeCuro Different
+                What Makes Our Products Different
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 Our commitment to quality, sustainability, and innovation sets us apart in the industry.
@@ -108,7 +139,7 @@ const Index = () => {
                 </div>
                 
                 <blockquote className="text-xl md:text-2xl text-gray-800 italic mb-6">
-                  "PrimeCuro wipes have completely changed my daily routine. They're effective, gentle on my skin, and I love knowing I'm making a sustainable choice."
+                  "These wipes have completely changed my daily routine. They're effective, gentle on my skin, and I love knowing I'm making a sustainable choice."
                 </blockquote>
                 
                 <div className="flex items-center justify-center">
@@ -145,50 +176,26 @@ const Index = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
-              <div className="premium-card relative overflow-hidden">
-                <div className="absolute -right-10 top-5 rotate-45 bg-brand-600 text-white px-10 py-1 text-sm font-semibold">
-                  Save $15.99
+              {bundleProducts.map((bundle, index) => (
+                <div key={index} className="premium-card relative overflow-hidden">
+                  <div className="absolute -right-10 top-5 rotate-45 bg-brand-600 text-white px-10 py-1 text-sm font-semibold">
+                    Save ${bundle.discount.toFixed(2)}
+                  </div>
+                  <div className="bg-blue-50 rounded-lg p-4 mb-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{bundle.name}</h3>
+                    <p className="text-gray-600 mb-4">{bundle.description}</p>
+                    <div className="text-sm text-brand-700 font-semibold mb-1">
+                      {index === 0 ? "Limited Time Offer!" : index === 1 ? "Best Seller!" : "Most Popular!"}
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      {bundle.remaining ? `Only ${bundle.remaining} ${index === 0 ? 'offers' : 'packs'} remaining` : 'Cancel anytime'}
+                    </div>
+                  </div>
+                  <button className="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-all duration-300 hover:shadow-md transform hover:-translate-y-0.5">
+                    {index === 2 ? 'Start Subscription' : 'Shop This Bundle'}
+                  </button>
                 </div>
-                <div className="bg-blue-50 rounded-lg p-4 mb-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Buy 2, Get 1 Free</h3>
-                  <p className="text-gray-600 mb-4">Mix and match any three PrimeCuro products and get the lowest priced item for free.</p>
-                  <div className="text-sm text-brand-700 font-semibold mb-1">Limited Time Offer!</div>
-                  <div className="text-xs text-gray-500">Only 7 offers remaining</div>
-                </div>
-                <button className="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-all duration-300 hover:shadow-md transform hover:-translate-y-0.5">
-                  Shop This Bundle
-                </button>
-              </div>
-              
-              <div className="premium-card relative overflow-hidden">
-                <div className="absolute -right-12 top-5 rotate-45 bg-brand-600 text-white px-10 py-1 text-sm font-semibold">
-                  25% Off
-                </div>
-                <div className="bg-blue-50 rounded-lg p-4 mb-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Family Pack</h3>
-                  <p className="text-gray-600 mb-4">One of each: Baby Wipes, Adult Wipes, and Flushable Wipes at a special bundle price.</p>
-                  <div className="text-sm text-brand-700 font-semibold mb-1">Best Seller!</div>
-                  <div className="text-xs text-gray-500">Only 5 packs remaining</div>
-                </div>
-                <button className="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-all duration-300 hover:shadow-md transform hover:-translate-y-0.5">
-                  Shop This Bundle
-                </button>
-              </div>
-              
-              <div className="premium-card relative overflow-hidden">
-                <div className="absolute -right-10 top-5 rotate-45 bg-brand-600 text-white px-10 py-1 text-sm font-semibold">
-                  15% Off
-                </div>
-                <div className="bg-blue-50 rounded-lg p-4 mb-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Subscribe & Save</h3>
-                  <p className="text-gray-600 mb-4">Get your favorite products delivered monthly and enjoy special subscriber discounts.</p>
-                  <div className="text-sm text-brand-700 font-semibold mb-1">Most Popular!</div>
-                  <div className="text-xs text-gray-500">Cancel anytime</div>
-                </div>
-                <button className="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-all duration-300 hover:shadow-md transform hover:-translate-y-0.5">
-                  Start Subscription
-                </button>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -210,7 +217,7 @@ const Index = () => {
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Ready to Experience the PrimeCuro Difference?
+                Ready to Experience the Difference?
               </h2>
               <p className="text-white/90 text-lg mb-8">
                 Join thousands of satisfied customers who've made the switch to premium, sustainable wipes.

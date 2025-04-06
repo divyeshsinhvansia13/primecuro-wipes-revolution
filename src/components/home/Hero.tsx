@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from "react";
 import { ArrowDown, ShoppingBag } from "lucide-react";
 import CTAButton from "@/components/ui/CTAButton";
-import AnimatedImage from "@/components/ui/AnimatedImage";
 import { Link } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -42,14 +41,22 @@ const Hero = () => {
   
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image with parallax effect - using lifestyle imagery */}
-      <div className="absolute inset-0 z-0">
-        <AnimatedImage
-          src="https://images.unsplash.com/photo-1585435557343-3b092031a831?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80"
-          alt="Person using eco-friendly PrimeCuro wipes"
+      {/* Video background with overlay for better text contrast */}
+      <div className="absolute inset-0 z-0 bg-black">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30" />
+        >
+          <source 
+            src="https://player.vimeo.com/external/373302496.sd.mp4?s=8c896d0ec0a8e44c9ed7fb3af1a6e6b3a6a840e0&profile_id=164&oauth2_token_id=57447761" 
+            type="video/mp4" 
+          />
+          Your browser does not support the video tag.
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40" />
       </div>
       
       {/* Hero content */}
