@@ -8,6 +8,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const taglineRef = useRef<HTMLParagraphElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const isMobile = useIsMobile();
   
   useEffect(() => {
@@ -29,6 +30,14 @@ const Hero = () => {
     };
     
     window.addEventListener("scroll", handleScroll);
+    
+    // Ensure video plays
+    if (videoRef.current) {
+      videoRef.current.play().catch(err => {
+        console.error("Video playback failed:", err);
+      });
+    }
+    
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   
@@ -44,6 +53,7 @@ const Hero = () => {
       {/* Video background with overlay for better text contrast */}
       <div className="absolute inset-0 z-0 bg-black">
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
@@ -51,7 +61,7 @@ const Hero = () => {
           className="w-full h-full object-cover"
         >
           <source 
-            src="https://player.vimeo.com/external/373302496.sd.mp4?s=8c896d0ec0a8e44c9ed7fb3af1a6e6b3a6a840e0&profile_id=164&oauth2_token_id=57447761" 
+            src="https://player.vimeo.com/progressive_redirect/playback/688183774/rendition/720p/file.mp4?loc=external&oauth2_token_id=57447761&signature=f3ec528b6cc1abee3dab1ef09bb8185a6c61b1fbc85c5ccdd6eeb4cb25fe6efd" 
             type="video/mp4" 
           />
           Your browser does not support the video tag.

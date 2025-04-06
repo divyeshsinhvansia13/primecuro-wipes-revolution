@@ -10,11 +10,11 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ShoppingBag, Star, ArrowRight } from "lucide-react";
 
-// Products for bundle display
+// Products for bundle display with updated descriptions
 const bundleProducts = [
   {
     id: '1',
-    name: 'Skin Care Baby Wipes - Scented',
+    name: 'Baby Wipes - Scented',
     description: 'Gentle, skin-friendly scented wipes that are biodegradable and eco-friendly.',
     price: 12.99,
     discount: 3.00,
