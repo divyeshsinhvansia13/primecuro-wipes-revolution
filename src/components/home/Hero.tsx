@@ -1,19 +1,15 @@
 
 import React, { useEffect, useRef } from "react";
-import { ArrowDown, ShoppingBag } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import CTAButton from "@/components/ui/CTAButton";
-import { Link } from "react-router-dom";
-import { useIsMobile } from "@/hooks/use-mobile";
+import AnimatedImage from "@/components/ui/AnimatedImage";
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  const taglineRef = useRef<HTMLParagraphElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const isMobile = useIsMobile();
   
   useEffect(() => {
     const handleScroll = () => {
-      if (!heroRef.current || !taglineRef.current) return;
+      if (!heroRef.current) return;
       
       const scrollPosition = window.scrollY;
       const opacity = 1 - Math.min(scrollPosition / 700, 1);
@@ -22,52 +18,10 @@ const Hero = () => {
         heroRef.current.style.opacity = `${opacity}`;
         heroRef.current.style.transform = `translateY(${scrollPosition * 0.3}px)`;
       }
-      
-      // Additional parallax effect for tagline
-      if (taglineRef.current) {
-        taglineRef.current.style.transform = `translateY(${scrollPosition * 0.15}px)`;
-      }
     };
     
     window.addEventListener("scroll", handleScroll);
-    
-    // Ensure video plays
-    if (videoRef.current) {
-      // Using load() before play() to ensure video is properly loaded first
-      videoRef.current.load();
-      
-      // Create a promise to handle autoplay
-      const playPromise = videoRef.current.play();
-      
-      // Handle potential promise rejection due to autoplay restrictions
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.error("Video playback failed:", error);
-          
-          // Listen for user interaction to try playing again
-          const tryPlayVideo = () => {
-            if (videoRef.current) {
-              videoRef.current.play()
-                .then(() => {
-                  // Remove event listeners once video plays
-                  document.removeEventListener('click', tryPlayVideo);
-                  document.removeEventListener('touchstart', tryPlayVideo);
-                })
-                .catch(e => console.error("Video play attempt failed:", e));
-            }
-          };
-          
-          document.addEventListener('click', tryPlayVideo);
-          document.addEventListener('touchstart', tryPlayVideo);
-        });
-      }
-    }
-    
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      document.removeEventListener('click', () => {});
-      document.removeEventListener('touchstart', () => {});
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   
   const scrollToContent = () => {
@@ -79,24 +33,14 @@ const Hero = () => {
   
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Video background with overlay for better text contrast */}
-      <div className="absolute inset-0 z-0 bg-black">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
+      {/* Background image with parallax effect */}
+      <div className="absolute inset-0 z-0">
+        <AnimatedImage
+          src="https://images.unsplash.com/photo-1563178406-4cdc2923acbc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80"
+          alt="Clean modern background"
           className="w-full h-full object-cover"
-        >
-          <source 
-            src="https://dudewipes.com/cdn/shop/files/Dude_Wipes_Single.mp4?v=1613578820" 
-            type="video/mp4" 
-          />
-          Your browser does not support the video tag.
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40" />
+        />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
       
       {/* Hero content */}
@@ -109,28 +53,18 @@ const Hero = () => {
             Innovative Hygiene for a Cleaner Tomorrow
           </h1>
           
-          <p 
-            ref={taglineRef}
-            className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-light italic transition-all duration-300"
-          >
-            Clean Ingredients. Confident Care.
+          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
+            Premium eco-friendly wipes that combine powerful cleaning with sustainable materials.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
-            <Link to="/products">
-              <CTAButton size="lg" className="group w-full sm:w-auto">
-                <span className="flex items-center">
-                  <ShoppingBag className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
-                  Shop Now
-                </span>
-              </CTAButton>
-            </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
+            <CTAButton size="lg">
+              Shop Products
+            </CTAButton>
             
-            <Link to="/about">
-              <CTAButton variant="outline" size="lg" className="bg-white/10 border-white/30 text-white hover:bg-white/20 w-full sm:w-auto">
-                Learn More
-              </CTAButton>
-            </Link>
+            <CTAButton variant="outline" size="lg" className="bg-white/10 border-white/30 text-white hover:bg-white/20">
+              Learn More
+            </CTAButton>
           </div>
         </div>
       </div>
