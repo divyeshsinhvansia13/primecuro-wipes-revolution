@@ -6,7 +6,6 @@ interface AnimatedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   delay?: number;
   blur?: boolean;
   fadeIn?: boolean;
-  placeholderColor?: string;
 }
 
 const AnimatedImage = ({ 
@@ -16,12 +15,10 @@ const AnimatedImage = ({
   delay = 0, 
   blur = true,
   fadeIn = true,
-  placeholderColor = "bg-gray-100",
   ...props 
 }: AnimatedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
-  const [hasError, setHasError] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
   
   useEffect(() => {
@@ -32,7 +29,7 @@ const AnimatedImage = ({
           observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: "200px" }
+      { threshold: 0.1 }
     );
     
     if (imgRef.current) {
@@ -48,48 +45,30 @@ const AnimatedImage = ({
     }, delay);
   };
   
-  const handleError = () => {
-    setHasError(true);
-    console.error(`Failed to load image: ${src}`);
-  };
-  
   return (
     <div className="relative overflow-hidden">
-      {blur && !isLoaded && isInView && !hasError && (
+      {blur && !isLoaded && isInView && (
         <div 
-          className={cn(
-            "absolute inset-0 animate-pulse",
-            placeholderColor
-          )}
+          className="absolute inset-0 bg-gray-100 animate-pulse"
           style={{ 
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         />
       )}
-      {hasError ? (
-        <div className={cn(
-          "flex items-center justify-center bg-gray-200 text-gray-500 text-sm",
+      <img
+        ref={imgRef}
+        src={isInView ? src : ''}
+        alt={alt}
+        className={cn(
+          'transition-all duration-700',
+          fadeIn && isLoaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-105 blur-md',
+          !fadeIn && 'opacity-100',
           className
-        )}>
-          Image not available
-        </div>
-      ) : (
-        <img
-          ref={imgRef}
-          src={isInView ? src : ''}
-          alt={alt}
-          className={cn(
-            'transition-all duration-700',
-            fadeIn && isLoaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-105 blur-md',
-            !fadeIn && 'opacity-100',
-            className
-          )}
-          onLoad={handleLoad}
-          onError={handleError}
-          {...props}
-        />
-      )}
+        )}
+        onLoad={handleLoad}
+        {...props}
+      />
     </div>
   );
 };
