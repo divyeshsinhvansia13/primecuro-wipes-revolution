@@ -12,7 +12,7 @@ const products = [
     subtitle: "Cucumber & Green Tea Fragrance",
     description: "Gentle, skin-friendly scented wipes that are biodegradable and eco-friendly, enriched with cucumber and green tea extracts for a soothing clean feeling, perfect for baby's delicate skin.",
     price: "$12.99",
-    image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
+    image: "/lovable-uploads/6333b48f-6279-4d52-aa19-607101ddf4aa.png",
     status: "available",
     color: "bg-blue-50",
     accentColor: "text-blue-700",
@@ -21,11 +21,11 @@ const products = [
   },
   {
     id: 2,
-    name: "PrimeCuro Skin Care Adult/Baby Wipes - Unscented",
+    name: "PrimeCuro Skin Care Baby Wipes - Unscented",
     subtitle: "Sensitive Skin Formula",
     description: "Perfect for sensitive skin, these unscented wipes are biodegradable, eco-friendly, and hypoallergenic with added moisturizers to keep skin soft and healthy.",
     price: "$14.99",
-    image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
+    image: "/lovable-uploads/57dedc89-87e4-4934-b473-4d1d042d80e6.png",
     status: "available",
     color: "bg-indigo-50",
     accentColor: "text-indigo-700",
@@ -38,7 +38,7 @@ const products = [
     subtitle: "Green Tea & Cucumber Fragrance",
     description: "Eco-friendly flushable wipes with a refreshing green tea and cucumber scent, perfect for adults seeking comfort and cleanliness with reduced environmental impact.",
     price: "$13.99",
-    image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
+    image: "/lovable-uploads/57014f70-7bb0-40c2-8d85-c2b5717a9c40.png",
     status: "available",
     color: "bg-teal-50",
     accentColor: "text-teal-700",
@@ -47,55 +47,16 @@ const products = [
   },
   {
     id: 4,
-    name: "PrimeCuro Disinfecting Wipes - Lemon Scented",
-    subtitle: "Powerful Cleaning Formula",
-    description: "Coming soon - Our powerful disinfectant wipes kill 99.9% of germs and bacteria with a refreshing lemon scent, perfect for household surfaces.",
-    price: "$15.99",
-    image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
-    status: "coming-soon",
-    color: "bg-amber-50",
-    accentColor: "text-amber-700",
-    iconColor: "text-amber-600",
-    badges: ["Kills 99.9% Germs", "Multi-Surface", "Eco-Friendly"]
-  },
-  {
-    id: 5,
     name: "PrimeCuro Disinfecting Wipes - Fresh Fragrance",
     subtitle: "Ocean Breeze Scent",
-    description: "Coming soon - Experience the clean, crisp scent of ocean breeze with our powerful disinfecting wipes that eliminate 99.9% of germs while being gentle on surfaces.",
+    description: "Experience the clean, crisp scent of ocean breeze with our powerful disinfecting wipes that eliminate 99.9% of germs while being gentle on surfaces.",
     price: "$15.99",
-    image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
-    status: "coming-soon",
+    image: "/lovable-uploads/5a08963b-0634-4989-90a3-a0f89dda752b.png",
+    status: "available",
     color: "bg-cyan-50",
     accentColor: "text-cyan-700",
     iconColor: "text-cyan-600",
     badges: ["Kills 99.9% Germs", "Multi-Surface", "Eco-Friendly"]
-  },
-  {
-    id: 6,
-    name: "PrimeCuro Hand Wipes - On The Go",
-    subtitle: "Portable Clean Anytime",
-    description: "Coming soon - Convenient, pocket-sized biodegradable hand wipes perfect for travel, office, or anywhere you need a quick refresh.",
-    price: "$8.99",
-    image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
-    status: "coming-soon",
-    color: "bg-violet-50",
-    accentColor: "text-violet-700",
-    iconColor: "text-violet-600",
-    badges: ["Portable", "Biodegradable", "Quick-Drying"]
-  },
-  {
-    id: 7,
-    name: "PrimeCuro Lens Wipes - Crystal Clear",
-    subtitle: "For Glasses & Screens",
-    description: "Coming soon - Specially formulated to clean eyeglasses, sunglasses, and electronic screens without streaks or residue. Lint-free and gentle on coated lenses.",
-    price: "$7.99",
-    image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
-    status: "coming-soon",
-    color: "bg-sky-50",
-    accentColor: "text-sky-700",
-    iconColor: "text-sky-600",
-    badges: ["Streak-Free", "Anti-Static", "Lint-Free"]
   }
 ];
 
@@ -104,6 +65,7 @@ const ProductsShowcase = () => {
   const [direction, setDirection] = useState<'next' | 'prev' | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const slideRef = useRef<HTMLDivElement>(null);
+  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
   
   const nextSlide = () => {
     if (isAnimating) return;
@@ -132,6 +94,38 @@ const ProductsShowcase = () => {
     }
   }, [isAnimating]);
 
+  // Auto-play functionality
+  useEffect(() => {
+    const startAutoPlay = () => {
+      autoPlayRef.current = setInterval(() => {
+        nextSlide();
+      }, 5000); // Change slide every 5 seconds
+    };
+
+    startAutoPlay();
+
+    // Clear interval on component unmount
+    return () => {
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current);
+      }
+    };
+  }, []);
+
+  // Pause auto-play when user interacts with controls
+  const handleManualControl = (callback: () => void) => {
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+    }
+    
+    callback();
+    
+    // Restart auto-play after interaction
+    autoPlayRef.current = setInterval(() => {
+      nextSlide();
+    }, 5000);
+  };
+
   const handleTransitionEnd = () => {
     setIsAnimating(false);
     setDirection(null);
@@ -155,7 +149,7 @@ const ProductsShowcase = () => {
         <div className="relative">
           <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between items-center z-10 px-4 md:px-8">
             <button
-              onClick={prevSlide}
+              onClick={() => handleManualControl(prevSlide)}
               className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:bg-white transition-all"
               disabled={isAnimating}
               aria-label="Previous product"
@@ -163,7 +157,7 @@ const ProductsShowcase = () => {
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
-              onClick={nextSlide}
+              onClick={() => handleManualControl(nextSlide)}
               className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:bg-white transition-all"
               disabled={isAnimating}
               aria-label="Next product"
@@ -264,9 +258,11 @@ const ProductsShowcase = () => {
                 onClick={() => {
                   if (isAnimating) return;
                   
-                  setActiveIndex(index);
-                  setIsAnimating(true);
-                  setDirection(index > activeIndex ? 'next' : 'prev');
+                  handleManualControl(() => {
+                    setActiveIndex(index);
+                    setIsAnimating(true);
+                    setDirection(index > activeIndex ? 'next' : 'prev');
+                  });
                 }}
                 className={cn(
                   "w-3 h-3 rounded-full transition-all",

@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 interface AnimatedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   delay?: number;
   blur?: boolean;
+  fadeIn?: boolean;
 }
 
 const AnimatedImage = ({ 
@@ -13,6 +14,7 @@ const AnimatedImage = ({
   className, 
   delay = 0, 
   blur = true,
+  fadeIn = true,
   ...props 
 }: AnimatedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -60,7 +62,8 @@ const AnimatedImage = ({
         alt={alt}
         className={cn(
           'transition-all duration-700',
-          isLoaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-105 blur-md',
+          fadeIn && isLoaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-105 blur-md',
+          !fadeIn && 'opacity-100',
           className
         )}
         onLoad={handleLoad}

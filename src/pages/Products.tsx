@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -196,7 +195,7 @@ const Products = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  // Updated product data with appropriate images
+  // Updated product data with new images
   const products: Product[] = [
     {
       id: 1,
@@ -212,13 +211,13 @@ const Products = () => {
         "Alcohol-free and pH balanced",
         "80 wipes per pack"
       ],
-      image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
+      image: "/lovable-uploads/6333b48f-6279-4d52-aa19-607101ddf4aa.png",
       status: "available",
       badges: ["Biodegradable", "Eco-Friendly", "Hypoallergenic"]
     },
     {
       id: 2,
-      name: "PrimeCuro Skin Care Adult/Baby Wipes - Unscented",
+      name: "PrimeCuro Skin Care Baby Wipes - Unscented",
       price: "$14.99",
       category: "personal",
       description: "Perfect for sensitive skin, these unscented wipes are biodegradable, eco-friendly, and hypoallergenic with added moisturizers to keep skin soft and healthy.",
@@ -230,7 +229,7 @@ const Products = () => {
         "Added moisturizers for skin health",
         "80 wipes per pack"
       ],
-      image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
+      image: "/lovable-uploads/57dedc89-87e4-4934-b473-4d1d042d80e6.png",
       status: "available",
       badges: ["Fragrance-Free", "Sensitive Skin", "Biodegradable"]
     },
@@ -248,30 +247,12 @@ const Products = () => {
         "Perfect for travel and on-the-go",
         "60 wipes per pack"
       ],
-      image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
+      image: "/lovable-uploads/57014f70-7bb0-40c2-8d85-c2b5717a9c40.png",
       status: "available",
       badges: ["Flushable", "Biodegradable", "Septic-Safe"]
     },
     {
       id: 4,
-      name: "PrimeCuro Disinfecting Wipes - Lemon Scented",
-      price: "$15.99",
-      category: "household",
-      description: "Our powerful disinfectant wipes kill 99.9% of germs and bacteria with a refreshing lemon scent, perfect for household surfaces and everyday cleaning needs.",
-      features: [
-        "Kills 99.9% of germs and bacteria",
-        "Fresh lemon scent",
-        "Safe for most household surfaces",
-        "Biodegradable & eco-friendly material",
-        "No harsh chemicals",
-        "75 wipes per pack"
-      ],
-      image: "/lovable-uploads/474043ad-7a36-41e9-b0a0-66a4a625e9b8.png",
-      status: "coming-soon",
-      badges: ["Kills 99.9% Germs", "Multi-Surface", "Eco-Friendly"]
-    },
-    {
-      id: 5,
       name: "PrimeCuro Disinfecting Wipes - Fresh Fragrance",
       price: "$15.99",
       category: "household",
@@ -279,6 +260,24 @@ const Products = () => {
       features: [
         "Kills 99.9% of germs and bacteria",
         "Ocean breeze fresh scent",
+        "Safe for most household surfaces",
+        "Biodegradable & eco-friendly material",
+        "No harsh chemicals",
+        "75 wipes per pack"
+      ],
+      image: "/lovable-uploads/5a08963b-0634-4989-90a3-a0f89dda752b.png",
+      status: "available",
+      badges: ["Kills 99.9% Germs", "Multi-Surface", "Eco-Friendly"]
+    },
+    {
+      id: 5,
+      name: "PrimeCuro Disinfecting Wipes - Lemon Scented",
+      price: "$15.99",
+      category: "household",
+      description: "Our powerful disinfectant wipes kill 99.9% of germs and bacteria with a refreshing lemon scent, perfect for household surfaces and everyday cleaning needs.",
+      features: [
+        "Kills 99.9% of germs and bacteria",
+        "Fresh lemon scent",
         "Safe for most household surfaces",
         "Biodegradable & eco-friendly material",
         "No harsh chemicals",
