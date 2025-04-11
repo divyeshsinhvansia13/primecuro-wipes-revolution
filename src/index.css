@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -155,6 +156,25 @@
       transform: scale(1);
       filter: blur(0);
     }
+  }
+  
+  /* 3D effect utilities */
+  .perspective {
+    perspective: 1000px;
+  }
+  
+  .product-card-3d {
+    transform-style: preserve-3d;
+    box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease;
+  }
+  
+  .product-card-3d:hover {
+    box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .-rotate-y-\[5deg\] {
+    transform: rotateY(-5deg);
   }
 }
 
