@@ -36,7 +36,7 @@ const Navbar = () => {
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="z-10">
-            <h1 className="text-xl font-bold tracking-tight text-brand-700">PrimeCuro</h1>
+            <h1 className="text-xl font-bold tracking-tight text-[#0FA0CE]">PrimeCuro</h1>
           </Link>
 
           {/* Desktop Navigation */}
