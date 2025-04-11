@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -8,14 +7,12 @@ import { Check } from "lucide-react";
 
 const BundlePlan = ({ 
   title, 
-  price, 
   description, 
   features, 
   isPopular = false, 
   variant = 'default' 
 }: { 
   title: string; 
-  price: string; 
   description: string; 
   features: string[];
   isPopular?: boolean;
@@ -31,8 +28,7 @@ const BundlePlan = ({
       <div className={`p-6 ${isPopular ? 'pt-8' : ''}`}>
         <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
         <div className="mb-4">
-          <span className="text-3xl font-bold text-gray-900">{price}</span>
-          <span className="text-gray-600 ml-1">/bundle</span>
+          <span className="text-gray-600">Bundle</span>
         </div>
         <p className="text-gray-600 mb-6">{description}</p>
         
@@ -100,7 +96,6 @@ const Bundles = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <BundlePlan 
                     title="Buy 2, Get 1 Free" 
-                    price="$32.99" 
                     description="Perfect starter pack for personal hygiene."
                     features={[
                       "Mix and match any three PrimeCuro products",
@@ -112,7 +107,6 @@ const Bundles = () => {
                   
                   <BundlePlan 
                     title="Family Essentials" 
-                    price="$49.99" 
                     description="Our most comprehensive personal care package."
                     features={[
                       "2 packs of Baby Wipes (Scented)",
@@ -127,7 +121,6 @@ const Bundles = () => {
                   
                   <BundlePlan 
                     title="Mix & Match Pack" 
-                    price="$39.99" 
                     description="Create your perfect combination."
                     features={[
                       "Choose any 4 packs of PrimeCuro wipes",
@@ -178,7 +171,6 @@ const Bundles = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <BundlePlan 
                     title="Home & Baby Combo" 
-                    price="$45.99" 
                     description="Perfect for families with little ones."
                     features={[
                       "3 packs of Baby Wipes (Scented)",
@@ -191,7 +183,6 @@ const Bundles = () => {
                   
                   <BundlePlan 
                     title="Complete Home Bundle" 
-                    price="$59.99" 
                     description="Everything you need for a clean, fresh home."
                     features={[
                       "2 packs of Baby Wipes (Scented)",
@@ -206,7 +197,6 @@ const Bundles = () => {
                   
                   <BundlePlan 
                     title="Family Variety Pack" 
-                    price="$49.99" 
                     description="A variety of wipes for all your family's needs."
                     features={[
                       "2 packs of Baby Wipes (Scented)",

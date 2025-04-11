@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronRight, ChevronLeft, Clock } from "lucide-react";
 import AnimatedImage from "@/components/ui/AnimatedImage";
@@ -11,7 +10,6 @@ const products = [
     name: "PrimeCuro Skin Care Baby Wipes - Scented",
     subtitle: "Cucumber & Green Tea Fragrance",
     description: "Gentle, skin-friendly scented wipes that are biodegradable and eco-friendly, enriched with cucumber and green tea extracts for a soothing clean feeling, perfect for baby's delicate skin.",
-    price: "$12.99",
     image: "/lovable-uploads/6333b48f-6279-4d52-aa19-607101ddf4aa.png",
     status: "available",
     color: "bg-blue-50",
@@ -24,7 +22,6 @@ const products = [
     name: "PrimeCuro Skin Care Baby Wipes - Unscented",
     subtitle: "Sensitive Skin Formula",
     description: "Perfect for sensitive skin, these unscented wipes are biodegradable, eco-friendly, and hypoallergenic with added moisturizers to keep skin soft and healthy.",
-    price: "$14.99",
     image: "/lovable-uploads/57dedc89-87e4-4934-b473-4d1d042d80e6.png",
     status: "available",
     color: "bg-indigo-50",
@@ -37,7 +34,6 @@ const products = [
     name: "PrimeCuro Flushable Adult Wipes - Scented",
     subtitle: "Green Tea & Cucumber Fragrance",
     description: "Eco-friendly flushable wipes with a refreshing green tea and cucumber scent, perfect for adults seeking comfort and cleanliness with reduced environmental impact.",
-    price: "$13.99",
     image: "/lovable-uploads/57014f70-7bb0-40c2-8d85-c2b5717a9c40.png",
     status: "available",
     color: "bg-teal-50",
@@ -50,7 +46,6 @@ const products = [
     name: "PrimeCuro Disinfecting Wipes - Fresh Fragrance",
     subtitle: "Ocean Breeze Scent",
     description: "Experience the clean, crisp scent of ocean breeze with our powerful disinfecting wipes that eliminate 99.9% of germs while being gentle on surfaces.",
-    price: "$15.99",
     image: "/lovable-uploads/5a08963b-0634-4989-90a3-a0f89dda752b.png",
     status: "available",
     color: "bg-cyan-50",
@@ -94,17 +89,15 @@ const ProductsShowcase = () => {
     }
   }, [isAnimating]);
 
-  // Auto-play functionality
   useEffect(() => {
     const startAutoPlay = () => {
       autoPlayRef.current = setInterval(() => {
         nextSlide();
-      }, 5000); // Change slide every 5 seconds
+      }, 5000);
     };
 
     startAutoPlay();
 
-    // Clear interval on component unmount
     return () => {
       if (autoPlayRef.current) {
         clearInterval(autoPlayRef.current);
@@ -112,7 +105,6 @@ const ProductsShowcase = () => {
     };
   }, []);
 
-  // Pause auto-play when user interacts with controls
   const handleManualControl = (callback: () => void) => {
     if (autoPlayRef.current) {
       clearInterval(autoPlayRef.current);
@@ -120,7 +112,6 @@ const ProductsShowcase = () => {
     
     callback();
     
-    // Restart auto-play after interaction
     autoPlayRef.current = setInterval(() => {
       nextSlide();
     }, 5000);
@@ -213,9 +204,6 @@ const ProductsShowcase = () => {
                     </p>
                     <p className="text-gray-600 mb-4">
                       {product.description}
-                    </p>
-                    <p className="text-xl font-semibold text-brand-600 mb-6">
-                      {product.price}
                     </p>
                     <div className="flex gap-3">
                       {product.status === "available" ? (

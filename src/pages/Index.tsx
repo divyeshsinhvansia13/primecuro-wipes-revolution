@@ -132,7 +132,6 @@ const Index = () => {
                 <div className="bg-blue-50 rounded-lg p-4 mb-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Buy 2, Get 1 Free</h3>
                   <p className="text-gray-600 mb-4">Mix and match any three PrimeCuro products and get the lowest priced item for free.</p>
-                  <p className="text-lg font-semibold text-blue-600">Save up to $15.99</p>
                 </div>
                 <button className="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
                   Shop This Bundle
@@ -143,7 +142,6 @@ const Index = () => {
                 <div className="bg-blue-50 rounded-lg p-4 mb-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Family Pack</h3>
                   <p className="text-gray-600 mb-4">One of each: Baby Wipes, Adult Wipes, and Flushable Wipes at a special bundle price.</p>
-                  <p className="text-lg font-semibold text-blue-600">25% Off Regular Price</p>
                 </div>
                 <button className="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
                   Shop This Bundle
@@ -154,7 +152,6 @@ const Index = () => {
                 <div className="bg-blue-50 rounded-lg p-4 mb-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Subscribe & Save</h3>
                   <p className="text-gray-600 mb-4">Get your favorite products delivered monthly and enjoy special subscriber discounts.</p>
-                  <p className="text-lg font-semibold text-blue-600">15% Off Every Order</p>
                 </div>
                 <button className="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
                   Start Subscription

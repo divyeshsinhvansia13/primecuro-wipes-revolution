@@ -22,7 +22,6 @@ import {
 interface Product {
   id: number;
   name: string;
-  price: string;
   category: string;
   description: string;
   features: string[];
@@ -57,7 +56,6 @@ const ProductCard = ({ product, onQuickView }: { product: Product; onQuickView: 
       <div className="p-5">
         <div className="flex justify-between items-start mb-2">
           <h3 className="text-lg font-bold text-gray-900">{product.name}</h3>
-          <span className="text-brand-600 font-semibold">{product.price}</span>
         </div>
         <p className="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
         <div className="flex flex-wrap gap-1 mb-3">
@@ -122,9 +120,6 @@ const ProductDetailDialog = ({
       <DialogContent className="max-w-4xl">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold">{product.name}</DialogTitle>
-          <DialogDescription className="text-brand-600 font-medium text-lg">
-            {product.price}
-          </DialogDescription>
         </DialogHeader>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
@@ -200,7 +195,6 @@ const Products = () => {
     {
       id: 1,
       name: "PrimeCuro Skin Care Baby Wipes - Scented",
-      price: "$12.99",
       category: "personal",
       description: "Gentle, skin-friendly scented wipes with cucumber and green tea fragrance, perfect for baby's delicate skin. Biodegradable and eco-friendly.",
       features: [
@@ -218,7 +212,6 @@ const Products = () => {
     {
       id: 2,
       name: "PrimeCuro Skin Care Baby Wipes - Unscented",
-      price: "$14.99",
       category: "personal",
       description: "Perfect for sensitive skin, these unscented wipes are biodegradable, eco-friendly, and hypoallergenic with added moisturizers to keep skin soft and healthy.",
       features: [
@@ -236,7 +229,6 @@ const Products = () => {
     {
       id: 3,
       name: "PrimeCuro Flushable Adult Wipes - Scented",
-      price: "$13.99",
       category: "personal",
       description: "Eco-friendly flushable wipes with a refreshing green tea and cucumber scent, perfect for adults seeking comfort and cleanliness with reduced environmental impact.",
       features: [
@@ -254,7 +246,6 @@ const Products = () => {
     {
       id: 4,
       name: "PrimeCuro Disinfecting Wipes - Fresh Fragrance",
-      price: "$15.99",
       category: "household",
       description: "Experience the clean, crisp scent of ocean breeze with our powerful disinfecting wipes that eliminate 99.9% of germs while being gentle on surfaces.",
       features: [
@@ -272,7 +263,6 @@ const Products = () => {
     {
       id: 5,
       name: "PrimeCuro Disinfecting Wipes - Lemon Scented",
-      price: "$15.99",
       category: "household",
       description: "Our powerful disinfectant wipes kill 99.9% of germs and bacteria with a refreshing lemon scent, perfect for household surfaces and everyday cleaning needs.",
       features: [
@@ -290,7 +280,6 @@ const Products = () => {
     {
       id: 6,
       name: "PrimeCuro Hand Wipes - On The Go",
-      price: "$8.99",
       category: "household",
       description: "Convenient, pocket-sized biodegradable hand wipes perfect for travel, office, or anywhere you need a quick refresh.",
       features: [
@@ -308,7 +297,6 @@ const Products = () => {
     {
       id: 7,
       name: "PrimeCuro Lens Wipes - Crystal Clear",
-      price: "$7.99",
       category: "household",
       description: "Specially formulated to clean eyeglasses, sunglasses, and electronic screens without streaks or residue. Lint-free and gentle on coated lenses.",
       features: [
