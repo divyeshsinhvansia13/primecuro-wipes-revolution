@@ -33,14 +33,14 @@ const Hero = () => {
   
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image with parallax effect */}
+      {/* Background with premium gradient overlay */}
       <div className="absolute inset-0 z-0">
         <AnimatedImage
           src="https://images.unsplash.com/photo-1563178406-4cdc2923acbc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80"
           alt="Clean modern background"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-brand-800/40 to-brand-700/60" />
       </div>
       
       {/* Hero content */}
@@ -49,7 +49,11 @@ const Hero = () => {
         className="container mx-auto px-4 pt-20 relative z-10 text-center transition-all duration-300"
       >
         <div className="max-w-4xl mx-auto space-y-6">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tighter">
+          <div className="inline-block px-4 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-2">
+            <span className="text-white/90 text-sm font-medium">Premium Eco-Friendly Products</span>
+          </div>
+          
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tighter drop-shadow-md">
             Innovative Hygiene for a Cleaner Tomorrow
           </h1>
           
@@ -58,24 +62,30 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
-            <CTAButton size="lg">
+            <CTAButton size="lg" className="shadow-lg hover:shadow-xl transition-shadow">
               Shop Products
             </CTAButton>
             
-            <CTAButton variant="outline" size="lg" className="bg-white/10 border-white/30 text-white hover:bg-white/20">
+            <CTAButton 
+              variant="outline" 
+              size="lg" 
+              className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 shadow-lg hover:shadow-xl transition-all"
+            >
               Learn More
             </CTAButton>
           </div>
         </div>
       </div>
       
-      {/* Scroll down indicator */}
+      {/* Scroll down indicator with enhanced styling */}
       <button
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce z-10"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce z-10 group"
         onClick={scrollToContent}
         aria-label="Scroll down"
       >
-        <ArrowDown className="h-8 w-8" />
+        <div className="p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 group-hover:bg-white/20 transition-all">
+          <ArrowDown className="h-6 w-6" />
+        </div>
       </button>
     </section>
   );
