@@ -5,7 +5,6 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/home/Hero";
 import ProductsShowcase from "@/components/home/ProductsShowcase";
 import Features from "@/components/home/Features";
-import { Award, Shield, Leaf, Star } from "lucide-react";
 
 const Index = () => {
   useEffect(() => {
@@ -20,15 +19,15 @@ const Index = () => {
         <Hero />
         <ProductsShowcase />
         
-        {/* Features Section with updated teal color scheme */}
-        <section className="py-20 bg-gradient-to-b from-brand-50 to-white">
+        {/* Features Section with updated blue color scheme */}
+        <section className="py-20 bg-blue-100">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <span className="inline-block px-3 py-1 text-xs font-semibold bg-brand-100 text-brand-800 rounded-full mb-3">
                 WHY CHOOSE US
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                What Makes <span className="text-brand-600">PrimeCuro</span> Different
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                What Makes PrimeCuro Different
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 Our commitment to quality, sustainability, and innovation sets us apart in the industry.
@@ -36,9 +35,11 @@ const Index = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-              <div className="premium-card p-8 hover:shadow-premium-hover">
-                <div className="w-16 h-16 bg-brand-50 rounded-full flex items-center justify-center mb-6 mx-auto">
-                  <Shield className="w-8 h-8 text-brand-600" />
+              <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow">
+                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6 mx-auto">
+                  <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                  </svg>
                 </div>
                 <h3 className="text-xl font-bold text-center text-gray-900 mb-4">Eco-Friendly Materials</h3>
                 <p className="text-gray-600 text-center">
@@ -46,9 +47,11 @@ const Index = () => {
                 </p>
               </div>
               
-              <div className="premium-card p-8 hover:shadow-premium-hover">
-                <div className="w-16 h-16 bg-brand-50 rounded-full flex items-center justify-center mb-6 mx-auto">
-                  <Award className="w-8 h-8 text-brand-600" />
+              <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow">
+                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6 mx-auto">
+                  <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
                 </div>
                 <h3 className="text-xl font-bold text-center text-gray-900 mb-4">Dermatologically Tested</h3>
                 <p className="text-gray-600 text-center">
@@ -56,9 +59,11 @@ const Index = () => {
                 </p>
               </div>
               
-              <div className="premium-card p-8 hover:shadow-premium-hover">
-                <div className="w-16 h-16 bg-brand-50 rounded-full flex items-center justify-center mb-6 mx-auto">
-                  <Star className="w-8 h-8 text-brand-600" />
+              <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow">
+                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6 mx-auto">
+                  <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                  </svg>
                 </div>
                 <h3 className="text-xl font-bold text-center text-gray-900 mb-4">Made in the USA</h3>
                 <p className="text-gray-600 text-center">
@@ -68,7 +73,7 @@ const Index = () => {
             </div>
             
             <div className="flex justify-center mt-12">
-              <button className="px-8 py-3 bg-gradient-to-r from-brand-500 to-brand-700 text-white font-medium rounded-full hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+              <button className="px-8 py-3 bg-blue-600 text-white font-medium rounded-full hover:bg-blue-700 transition-colors shadow-lg">
                 Learn More About Our Quality
               </button>
             </div>
@@ -76,34 +81,31 @@ const Index = () => {
         </section>
         
         {/* Testimonial Section */}
-        <section className="py-20 bg-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-50/50 to-transparent z-0"></div>
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-5xl mx-auto">
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto text-center">
               <span className="inline-block px-3 py-1 text-xs font-semibold bg-brand-100 text-brand-800 rounded-full mb-3">
                 WHAT PEOPLE SAY
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12">
-                Our Customers <span className="text-brand-600">Love Us</span>
+                Our Customers Love Us
               </h2>
               
-              <div className="premium-card p-10 backdrop-blur-sm bg-white/70">
-                <blockquote className="text-xl md:text-2xl text-gray-800 italic mb-6 font-display">
-                  "PrimeCuro wipes have completely changed my daily routine. They're effective, gentle on my skin, and I love knowing I'm making a sustainable choice."
-                </blockquote>
-                
-                <div className="flex items-center">
-                  <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-brand-200">
-                    <img 
-                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" 
-                      alt="Customer" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="text-left">
-                    <p className="font-semibold text-gray-900">Sarah Johnson</p>
-                    <p className="text-sm text-brand-600">Loyal Customer</p>
-                  </div>
+              <blockquote className="text-xl md:text-2xl text-gray-800 italic mb-6">
+                "PrimeCuro wipes have completely changed my daily routine. They're effective, gentle on my skin, and I love knowing I'm making a sustainable choice."
+              </blockquote>
+              
+              <div className="flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
+                  <img 
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" 
+                    alt="Customer" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="text-left">
+                  <p className="font-semibold text-gray-900">Sarah Johnson</p>
+                  <p className="text-sm text-gray-600">Loyal Customer</p>
                 </div>
               </div>
             </div>
@@ -111,14 +113,14 @@ const Index = () => {
         </section>
         
         {/* Bundle & Save Section */}
-        <section className="py-20 bg-gradient-to-b from-white to-brand-50/50">
+        <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <span className="inline-block px-3 py-1 text-xs font-semibold bg-brand-100 text-brand-800 rounded-full mb-3">
                 SPECIAL OFFERS
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Bundle & <span className="text-brand-600">Save</span>
+                Bundle & Save
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 Get more value with our specially curated product bundles.
@@ -126,32 +128,32 @@ const Index = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <div className="premium-card hover:shadow-premium-hover backdrop-blur-sm bg-white/50 p-6">
-                <div className="bg-gradient-to-r from-brand-50 to-brand-100 rounded-lg p-4 mb-6">
+              <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+                <div className="bg-blue-50 rounded-lg p-4 mb-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Buy 2, Get 1 Free</h3>
                   <p className="text-gray-600 mb-4">Mix and match any three PrimeCuro products and get the lowest priced item for free.</p>
                 </div>
-                <button className="w-full py-3 bg-gradient-to-r from-brand-500 to-brand-600 text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <button className="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
                   Shop This Bundle
                 </button>
               </div>
               
-              <div className="premium-card hover:shadow-premium-hover backdrop-blur-sm bg-white/50 p-6">
-                <div className="bg-gradient-to-r from-brand-50 to-brand-100 rounded-lg p-4 mb-6">
+              <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+                <div className="bg-blue-50 rounded-lg p-4 mb-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Family Pack</h3>
                   <p className="text-gray-600 mb-4">One of each: Baby Wipes, Adult Wipes, and Flushable Wipes at a special bundle price.</p>
                 </div>
-                <button className="w-full py-3 bg-gradient-to-r from-brand-500 to-brand-600 text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <button className="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
                   Shop This Bundle
                 </button>
               </div>
               
-              <div className="premium-card hover:shadow-premium-hover backdrop-blur-sm bg-white/50 p-6">
-                <div className="bg-gradient-to-r from-brand-50 to-brand-100 rounded-lg p-4 mb-6">
+              <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+                <div className="bg-blue-50 rounded-lg p-4 mb-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Subscribe & Save</h3>
                   <p className="text-gray-600 mb-4">Get your favorite products delivered monthly and enjoy special subscriber discounts.</p>
                 </div>
-                <button className="w-full py-3 bg-gradient-to-r from-brand-500 to-brand-600 text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <button className="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
                   Start Subscription
                 </button>
               </div>
@@ -159,8 +161,8 @@ const Index = () => {
           </div>
         </section>
         
-        {/* CTA Section with premium effect */}
-        <section className="py-20 bg-gradient-to-r from-brand-700 to-brand-900 relative overflow-hidden">
+        {/* CTA Section */}
+        <section className="py-20 bg-brand-600 relative overflow-hidden">
           <div 
             className="absolute inset-0 z-0 opacity-10"
             style={{
@@ -170,23 +172,19 @@ const Index = () => {
             }}
           />
           
-          {/* Decorative elements */}
-          <div className="absolute top-0 right-0 w-72 h-72 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 backdrop-blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4 backdrop-blur-3xl"></div>
-          
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Ready to Experience the <span className="text-brand-200">PrimeCuro Difference?</span>
+                Ready to Experience the PrimeCuro Difference?
               </h2>
               <p className="text-white/90 text-lg mb-8">
                 Join thousands of satisfied customers who've made the switch to premium, sustainable wipes.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <button className="px-8 py-3 bg-white text-brand-700 font-medium rounded-full hover:bg-gray-100 transition-colors shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <button className="px-8 py-3 bg-white text-brand-600 font-medium rounded-full hover:bg-gray-100 transition-colors shadow-lg">
                   Shop Now
                 </button>
-                <button className="px-8 py-3 bg-transparent text-white font-medium rounded-full border border-white/30 hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1">
+                <button className="px-8 py-3 bg-transparent text-white font-medium rounded-full border border-white/30 hover:bg-white/10 transition-colors">
                   Learn More
                 </button>
               </div>
