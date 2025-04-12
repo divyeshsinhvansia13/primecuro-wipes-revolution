@@ -1,5 +1,5 @@
-
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/home/Hero";
@@ -7,6 +7,8 @@ import ProductsShowcase from "@/components/home/ProductsShowcase";
 import Features from "@/components/home/Features";
 
 const Index = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     // Scroll to top on component mount
     window.scrollTo(0, 0);
@@ -16,8 +18,10 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow">
-        <Hero />
-        <ProductsShowcase />
+        <Hero 
+          onShopProductsClick={() => navigate('/products')}
+          onLearnMoreClick={() => navigate('/sustainability')}
+        />
         
         {/* Features Section with updated color scheme */}
         <section className="py-20 bg-gradient-to-b from-blue-50 to-blue-100">
