@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { ArrowDown } from "lucide-react";
 import CTAButton from "@/components/ui/CTAButton";
@@ -41,44 +42,54 @@ const Hero: React.FC<HeroProps> = ({
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <AnimatedImage
-          src="https://images.unsplash.com/photo-1563178406-4cdc2923acbc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80"
-          alt="Clean modern background"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-brand-800/40 to-brand-700/60" />
+        {/* Video background for premium look */}
+        <div className="w-full h-full absolute inset-0">
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="https://cdn.gpteng.co/lovable/hero-bg-video.mp4" type="video/mp4" />
+          </video>
+          {/* Fallback image if video doesn't load */}
+          <AnimatedImage
+            src="https://images.unsplash.com/photo-1563178406-4cdc2923acbc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80"
+            alt="Clean modern background"
+            className="w-full h-full object-cover absolute inset-0 -z-10"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-brand-800/50 to-brand-700/60" />
       </div>
       
       <div 
         ref={heroRef}
         className="container mx-auto px-4 pt-20 relative z-10 text-center transition-all duration-300"
       >
-        <div className="max-w-4xl mx-auto space-y-6">
+        <div className="max-w-4xl mx-auto space-y-8">
           <div className="inline-block px-4 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-2">
             <span className="text-white/90 text-sm font-medium">Premium Eco-Friendly Products</span>
           </div>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tighter drop-shadow-md">
-            Innovative Hygiene for a Cleaner Tomorrow
+            Feel Clean. Stay Confident. <br/> 
+            <span className="text-brand-300">Wipe Smarter</span> with PrimeCuro.
           </h1>
           
-          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
-            Premium eco-friendly wipes that combine powerful cleaning with sustainable materials.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5 pt-8">
             <CTAButton 
               size="lg" 
-              className="shadow-lg hover:shadow-xl transition-shadow"
+              className="shadow-lg hover:shadow-xl transition-shadow w-full sm:w-auto px-8"
               onClick={onShopProductsClick}
             >
-              Shop Products
+              Shop Now
             </CTAButton>
             
             <CTAButton 
               variant="outline" 
               size="lg" 
-              className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 shadow-lg hover:shadow-xl transition-all"
+              className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 shadow-lg hover:shadow-xl transition-all w-full sm:w-auto px-8"
               onClick={onLearnMoreClick}
             >
               Learn More
