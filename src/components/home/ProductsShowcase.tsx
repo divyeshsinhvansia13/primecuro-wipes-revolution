@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronRight, ChevronLeft, Clock } from "lucide-react";
 import AnimatedImage from "@/components/ui/AnimatedImage";
@@ -13,11 +12,9 @@ const products = [
     description: "Gentle, skin-friendly scented wipes that are biodegradable and eco-friendly, enriched with cucumber and green tea extracts for a soothing clean feeling, perfect for baby's delicate skin.",
     image: "/lovable-uploads/6333b48f-6279-4d52-aa19-607101ddf4aa.png",
     status: "available",
-    color: "from-brand-50 to-blue-50",
-    accentColor: "text-brand-700",
-    iconColor: "text-brand-600",
-    badgeBg: "bg-brand-100",
-    badgeText: "text-brand-800",
+    color: "bg-gradient-to-br from-teal-50 to-blue-50",
+    accentColor: "text-teal-700",
+    iconColor: "text-teal-600",
     badges: ["Biodegradable", "Eco-Friendly", "Hypoallergenic"]
   },
   {
@@ -27,11 +24,9 @@ const products = [
     description: "Perfect for sensitive skin, these unscented wipes are biodegradable, eco-friendly, and hypoallergenic with added moisturizers to keep skin soft and healthy.",
     image: "/lovable-uploads/57dedc89-87e4-4934-b473-4d1d042d80e6.png",
     status: "available",
-    color: "from-blue-50 to-brand-50",
+    color: "bg-gradient-to-br from-blue-50 to-indigo-50",
     accentColor: "text-blue-700",
     iconColor: "text-blue-600",
-    badgeBg: "bg-blue-100",
-    badgeText: "text-blue-800",
     badges: ["Biodegradable", "For Sensitive Skin", "Hypoallergenic"]
   },
   {
@@ -41,11 +36,9 @@ const products = [
     description: "Eco-friendly flushable wipes with a refreshing green tea and cucumber scent, perfect for adults seeking comfort and cleanliness with reduced environmental impact.",
     image: "/lovable-uploads/57014f70-7bb0-40c2-8d85-c2b5717a9c40.png",
     status: "available",
-    color: "from-brand-50 to-blue-100",
-    accentColor: "text-brand-700",
-    iconColor: "text-brand-600",
-    badgeBg: "bg-brand-100",
-    badgeText: "text-brand-800",
+    color: "bg-gradient-to-br from-emerald-50 to-teal-50",
+    accentColor: "text-emerald-700",
+    iconColor: "text-emerald-600",
     badges: ["Flushable", "Biodegradable", "Eco-Friendly"]
   },
   {
@@ -55,11 +48,9 @@ const products = [
     description: "Experience the clean, crisp scent of ocean breeze with our powerful disinfecting wipes that eliminate 99.9% of germs while being gentle on surfaces.",
     image: "/lovable-uploads/5a08963b-0634-4989-90a3-a0f89dda752b.png",
     status: "available",
-    color: "from-blue-50 to-brand-100",
-    accentColor: "text-blue-700",
-    iconColor: "text-blue-600",
-    badgeBg: "bg-blue-100",
-    badgeText: "text-blue-800",
+    color: "bg-gradient-to-br from-cyan-50 to-blue-50",
+    accentColor: "text-cyan-700",
+    iconColor: "text-cyan-600",
     badges: ["Kills 99.9% Germs", "Multi-Surface", "Eco-Friendly"]
   }
 ];
@@ -168,7 +159,7 @@ const ProductsShowcase = () => {
           
           <div
             ref={slideRef}
-            className="relative h-[650px] md:h-[550px] overflow-hidden rounded-2xl shadow-xl perspective"
+            className="relative h-[620px] md:h-[550px] overflow-hidden rounded-2xl shadow-xl"
             onTransitionEnd={handleTransitionEnd}
           >
             <div 
@@ -187,20 +178,13 @@ const ProductsShowcase = () => {
                   key={product.id}
                   className={cn(
                     "w-full h-full flex-shrink-0 flex flex-col md:flex-row items-center",
-                    `bg-gradient-to-br ${product.color}`
+                    product.color
                   )}
                 >
                   <div className="w-full md:w-1/2 p-6 md:p-12 flex flex-col items-start justify-center">
                     <div className="mb-3 flex flex-wrap items-center gap-2">
                       {product.badges.map((badge, index) => (
-                        <div 
-                          key={index} 
-                          className={cn(
-                            "px-3 py-1 rounded-full text-xs font-medium flex items-center shadow-sm border border-gray-100",
-                            product.badgeBg, 
-                            product.badgeText
-                          )}
-                        >
+                        <div key={index} className="bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium flex items-center shadow-sm border border-gray-100">
                           {badge}
                         </div>
                       ))}
@@ -238,13 +222,13 @@ const ProductsShowcase = () => {
                       )}
                     </div>
                   </div>
-                  <div className="w-full md:w-1/2 h-full p-4 md:p-8 flex items-center justify-center">
-                    <div className="product-card-3d w-full max-w-md transition-all duration-300 hover:-rotate-y-[5deg] hover:scale-105 transform perspective">
+                  <div className="w-full md:w-1/2 h-full p-4 md:p-8 flex items-center justify-center bg-white/50 backdrop-blur-sm">
+                    <div className="w-full max-w-md transition-all duration-300 hover:scale-105">
                       <AnimatedImage 
                         src={product.image} 
                         alt={product.name}
                         className={cn(
-                          "w-full h-auto object-contain rounded-lg drop-shadow-2xl transform transition-all duration-500",
+                          "w-full h-auto object-contain shadow-lg rounded-lg",
                           product.status === "coming-soon" && "blur-[1px] opacity-90"
                         )}
                       />

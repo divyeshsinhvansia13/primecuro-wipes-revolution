@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from "react";
 import { ShieldCheck, Leaf, Droplets, RefreshCw } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -60,7 +59,7 @@ const Features = () => {
   }, []);
   
   return (
-    <section className="py-20 bg-gradient-to-b from-blue-50 to-brand-50">
+    <section className="py-20 bg-green-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block px-3 py-1 text-xs font-semibold bg-brand-100 text-brand-800 rounded-full mb-3">
@@ -80,7 +79,7 @@ const Features = () => {
               key={feature.id}
               ref={(el) => (featureRefs.current[index] = el)}
               className={cn(
-                "bg-white rounded-xl p-8 shadow-md hover:shadow-xl border border-gray-100 transition-all duration-500 opacity-0 transform translate-y-8 hover:-translate-y-2",
+                "bg-white rounded-xl p-8 shadow-sm border border-gray-100 transition-all duration-500 opacity-0 transform translate-y-8 hover:shadow-md hover:-translate-y-1",
                 index % 2 === 0 ? "lg:translate-y-4" : ""
               )}
               style={{ transitionDelay: `${index * 100}ms` }}
