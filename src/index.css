@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -118,13 +117,11 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
-    font-family: 'Montserrat', sans-serif;
+    @apply bg-background text-foreground font-sans antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight;
-    font-family: 'Montserrat', sans-serif;
   }
 }
 
@@ -159,41 +156,6 @@
       filter: blur(0);
     }
   }
-  
-  .floating {
-    animation: floating 3s ease-in-out infinite;
-  }
-  
-  @keyframes floating {
-    0% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0px);
-    }
-  }
-  
-  .product-card-3d {
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-  }
-  
-  .product-card-3d:hover {
-    transform: rotateY(5deg) rotateX(5deg) translateZ(10px);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-  }
-  
-  .text-shadow {
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-  }
-  
-  .gradient-text {
-    @apply bg-gradient-to-r from-brand-600 to-blue-600 bg-clip-text text-transparent;
-  }
 }
 
 /* Scroll behavior */
@@ -219,4 +181,3 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #9ca3af;
 }
-
