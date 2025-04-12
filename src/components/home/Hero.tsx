@@ -88,10 +88,6 @@ const Hero: React.FC<HeroProps> = ({
             Feel Clean. Stay Confident. <span className="text-brand-200">Wipe Smarter</span> with PrimeCuro.
           </h1>
           
-          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
-            Premium eco-friendly wipes that combine powerful cleaning with sustainable materials.
-          </p>
-          
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
             <CTAButton 
               size="lg" 

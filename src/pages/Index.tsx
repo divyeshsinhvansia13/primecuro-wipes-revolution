@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
@@ -146,10 +147,16 @@ const Index = () => {
                 Join thousands of satisfied customers who've made the switch to premium, sustainable wipes.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <button className="px-8 py-3 bg-white text-brand-600 font-medium rounded-full hover:bg-gray-100 transition-colors shadow-lg hover:shadow-xl">
+                <button 
+                  className="px-8 py-3 bg-white text-brand-600 font-medium rounded-full hover:bg-gray-100 transition-colors shadow-lg hover:shadow-xl"
+                  onClick={() => navigate('/products')}
+                >
                   Shop Now
                 </button>
-                <button className="px-8 py-3 bg-transparent text-white font-medium rounded-full border border-white/30 hover:bg-white/10 transition-colors shadow-md hover:shadow-lg">
+                <button 
+                  className="px-8 py-3 bg-transparent text-white font-medium rounded-full border border-white/30 hover:bg-white/10 transition-colors shadow-md hover:shadow-lg"
+                  onClick={() => navigate('/sustainability')}
+                >
                   Learn More
                 </button>
               </div>
