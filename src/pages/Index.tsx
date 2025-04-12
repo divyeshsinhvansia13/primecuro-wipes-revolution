@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
@@ -5,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/home/Hero";
 import ProductsShowcase from "@/components/home/ProductsShowcase";
 import Features from "@/components/home/Features";
+import CustomerReviews from "@/components/home/CustomerReviews";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -22,6 +24,8 @@ const Index = () => {
           onShopProductsClick={() => navigate('/products')}
           onLearnMoreClick={() => navigate('/sustainability')}
         />
+        
+        <ProductsShowcase />
         
         {/* Features Section with updated color scheme */}
         <section className="py-20 bg-gradient-to-b from-blue-50 to-blue-100">
@@ -84,39 +88,8 @@ const Index = () => {
           </div>
         </section>
         
-        {/* Testimonial Section with enhanced styling */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-5xl mx-auto text-center">
-              <span className="inline-block px-3 py-1 text-xs font-semibold bg-brand-100 text-brand-800 rounded-full mb-3 shadow-sm">
-                WHAT PEOPLE SAY
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12">
-                Our Customers Love Us
-              </h2>
-              
-              <div className="bg-gradient-to-br from-blue-50 to-brand-50 p-8 rounded-2xl shadow-md mb-8">
-                <blockquote className="text-xl md:text-2xl text-gray-800 italic mb-6">
-                  "PrimeCuro wipes have completely changed my daily routine. They're effective, gentle on my skin, and I love knowing I'm making a sustainable choice."
-                </blockquote>
-                
-                <div className="flex items-center justify-center">
-                  <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-white shadow-md">
-                    <img 
-                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" 
-                      alt="Customer" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="text-left">
-                    <p className="font-semibold text-gray-900">Sarah Johnson</p>
-                    <p className="text-sm text-gray-600">Loyal Customer</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Customer Reviews Carousel */}
+        <CustomerReviews />
         
         {/* Bundle & Save Section with premium styling */}
         <section className="py-20 bg-gradient-to-b from-gray-50 to-blue-50">

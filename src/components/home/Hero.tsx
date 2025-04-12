@@ -42,24 +42,12 @@ const Hero: React.FC<HeroProps> = ({
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        {/* Video background for premium look */}
-        <div className="w-full h-full absolute inset-0">
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src="https://cdn.gpteng.co/lovable/hero-bg-video.mp4" type="video/mp4" />
-          </video>
-          {/* Fallback image if video doesn't load */}
-          <AnimatedImage
-            src="https://images.unsplash.com/photo-1563178406-4cdc2923acbc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80"
-            alt="Clean modern background"
-            className="w-full h-full object-cover absolute inset-0 -z-10"
-          />
-        </div>
+        {/* Background image with premium styling */}
+        <AnimatedImage
+          src="https://images.unsplash.com/photo-1563178406-4cdc2923acbc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80"
+          alt="Clean modern background"
+          className="w-full h-full object-cover absolute inset-0"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-brand-800/50 to-brand-700/60" />
       </div>
       
