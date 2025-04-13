@@ -25,11 +25,15 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <header 
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out",
-        scrolled ? "py-3 bg-white/90 backdrop-blur-md shadow-sm" : "py-5 bg-transparent"
+        scrolled ? "py-2 sm:py-3 bg-white/90 backdrop-blur-md shadow-sm" : "py-3 sm:py-5 bg-transparent"
       )}
     >
       <div className="container mx-auto px-4 md:px-6">
@@ -66,7 +70,7 @@ const Navbar = () => {
 
           {/* Mobile menu button */}
           <button 
-            className="lg:hidden z-10 text-gray-800 hover:text-gray-900 transition-colors"
+            className="lg:hidden z-20 text-gray-800 hover:text-gray-900 transition-colors p-1"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
@@ -80,7 +84,7 @@ const Navbar = () => {
           {/* Mobile menu */}
           <div 
             className={cn(
-              "fixed inset-0 bg-white flex flex-col p-6 pt-24 lg:hidden transition-transform duration-300 ease-in-out",
+              "fixed inset-0 bg-white z-10 flex flex-col p-6 pt-20 lg:hidden transition-transform duration-300 ease-in-out",
               isOpen ? "translate-x-0" : "translate-x-full"
             )}
           >
@@ -90,7 +94,7 @@ const Navbar = () => {
                   <Link 
                     to={item.href} 
                     className="text-lg font-medium text-gray-800 hover:text-brand-600 transition-colors"
-                    onClick={() => setIsOpen(false)}
+                    onClick={closeMenu}
                   >
                     {item.name}
                   </Link>

@@ -1,8 +1,10 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronRight, ChevronLeft, Clock } from "lucide-react";
 import AnimatedImage from "@/components/ui/AnimatedImage";
 import CTAButton from "@/components/ui/CTAButton";
 import { cn } from "@/lib/utils";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const products = [
   {
@@ -61,6 +63,7 @@ const ProductsShowcase = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const slideRef = useRef<HTMLDivElement>(null);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
+  const isMobile = useIsMobile();
   
   const nextSlide = () => {
     if (isAnimating) return;
@@ -123,43 +126,43 @@ const ProductsShowcase = () => {
   };
   
   return (
-    <section className="py-20 bg-gradient-to-b from-brand-50 to-blue-50 overflow-hidden">
+    <section className="py-16 sm:py-20 bg-gradient-to-b from-brand-50 to-blue-50 overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-12">
           <span className="inline-block px-4 py-1 text-xs font-semibold bg-brand-100 text-brand-800 rounded-full mb-3 shadow-sm">
             FEATURED PRODUCTS
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
             Premium Care for Every Need
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
             Our specially formulated wipes provide gentle yet effective cleaning for all ages and purposes.
           </p>
         </div>
         
         <div className="relative">
-          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between items-center z-10 px-4 md:px-8">
+          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between items-center z-10 px-2 md:px-8">
             <button
               onClick={() => handleManualControl(prevSlide)}
-              className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-md flex items-center justify-center text-gray-700 hover:bg-white transition-all border border-gray-100"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-md flex items-center justify-center text-gray-700 hover:bg-white transition-all border border-gray-100"
               disabled={isAnimating}
               aria-label="Previous product"
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
             </button>
             <button
               onClick={() => handleManualControl(nextSlide)}
-              className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-md flex items-center justify-center text-gray-700 hover:bg-white transition-all border border-gray-100"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-md flex items-center justify-center text-gray-700 hover:bg-white transition-all border border-gray-100"
               disabled={isAnimating}
               aria-label="Next product"
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
             </button>
           </div>
           
           <div
             ref={slideRef}
-            className="relative h-[620px] md:h-[550px] overflow-hidden rounded-2xl shadow-xl"
+            className="relative h-[650px] sm:h-[600px] md:h-[550px] overflow-hidden rounded-xl sm:rounded-2xl shadow-xl"
             onTransitionEnd={handleTransitionEnd}
           >
             <div 
@@ -181,37 +184,37 @@ const ProductsShowcase = () => {
                     product.color
                   )}
                 >
-                  <div className="w-full md:w-1/2 p-6 md:p-12 flex flex-col items-start justify-center">
-                    <div className="mb-3 flex flex-wrap items-center gap-2">
+                  <div className="w-full md:w-1/2 p-4 sm:p-6 md:p-12 flex flex-col items-start justify-center">
+                    <div className="mb-2 sm:mb-3 flex flex-wrap items-center gap-1 sm:gap-2">
                       {product.badges.map((badge, index) => (
-                        <div key={index} className="bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium flex items-center shadow-sm border border-gray-100">
+                        <div key={index} className="bg-white/80 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full text-xs font-medium flex items-center shadow-sm border border-gray-100">
                           {badge}
                         </div>
                       ))}
                       
                       {product.status === "coming-soon" && (
-                        <div className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-medium flex items-center shadow-sm">
+                        <div className="bg-amber-100 text-amber-800 px-2 sm:px-3 py-1 rounded-full text-xs font-medium flex items-center shadow-sm">
                           <Clock className="h-3 w-3 mr-1" />
                           Coming Soon
                         </div>
                       )}
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">
-                      {product.name}
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-1">
+                      {isMobile ? product.name.split(' - ')[0] : product.name}
                     </h3>
-                    <p className={cn("text-lg font-medium mb-3", product.accentColor)}>
+                    <p className={cn("text-base sm:text-lg font-medium mb-2 sm:mb-3", product.accentColor)}>
                       {product.subtitle}
                     </p>
-                    <p className="text-gray-600 mb-4">
-                      {product.description}
+                    <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4">
+                      {isMobile ? product.description.substring(0, 120) + '...' : product.description}
                     </p>
-                    <div className="flex gap-3">
+                    <div className="flex gap-2 sm:gap-3">
                       {product.status === "available" ? (
                         <>
-                          <CTAButton className="shadow-md hover:shadow-lg transition-shadow">
+                          <CTAButton className="shadow-md hover:shadow-lg transition-shadow text-sm sm:text-base px-4 sm:px-6 py-2">
                             Shop Now
                           </CTAButton>
-                          <CTAButton variant="outline" icon={false} className="shadow-md hover:shadow-lg transition-shadow">
+                          <CTAButton variant="outline" icon={false} className="shadow-md hover:shadow-lg transition-shadow text-sm sm:text-base px-4 sm:px-6 py-2">
                             Details
                           </CTAButton>
                         </>
@@ -222,8 +225,8 @@ const ProductsShowcase = () => {
                       )}
                     </div>
                   </div>
-                  <div className="w-full md:w-1/2 h-full p-4 md:p-8 flex items-center justify-center bg-white/50 backdrop-blur-sm">
-                    <div className="w-full max-w-md transition-all duration-300 hover:scale-105">
+                  <div className="w-full md:w-1/2 h-1/2 md:h-full p-4 md:p-8 flex items-center justify-center bg-white/50 backdrop-blur-sm">
+                    <div className="w-full max-w-xs sm:max-w-sm md:max-w-md transition-all duration-300 hover:scale-105">
                       <AnimatedImage 
                         src={product.image} 
                         alt={product.name}
@@ -239,7 +242,7 @@ const ProductsShowcase = () => {
             </div>
           </div>
           
-          <div className="flex justify-center mt-8 space-x-2">
+          <div className="flex justify-center mt-4 sm:mt-8 space-x-2">
             {products.map((_, index) => (
               <button
                 key={index}
@@ -253,9 +256,9 @@ const ProductsShowcase = () => {
                   });
                 }}
                 className={cn(
-                  "w-3 h-3 rounded-full transition-all",
+                  "w-2 sm:w-3 h-2 sm:h-3 rounded-full transition-all",
                   activeIndex === index 
-                    ? "bg-brand-600 w-8" 
+                    ? "bg-brand-600 w-6 sm:w-8" 
                     : "bg-gray-300 hover:bg-gray-400"
                 )}
                 aria-label={`Go to product ${index + 1}`}
