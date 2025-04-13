@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from "react";
 import { ArrowDown } from "lucide-react";
 import CTAButton from "@/components/ui/CTAButton";
-import AnimatedImage from "@/components/ui/AnimatedImage";
 
 interface HeroProps {
   onShopProductsClick?: () => void;
@@ -43,10 +42,11 @@ const Hero: React.FC<HeroProps> = ({
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         {/* Background image with premium styling */}
-        <AnimatedImage
+        <img
           src="https://images.unsplash.com/photo-1563178406-4cdc2923acbc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80"
-          alt="Clean modern background"
-          className="w-full h-full object-cover absolute inset-0"
+          alt="PrimeCuro Hero"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          style={{ objectPosition: "center top" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-brand-800/50 to-brand-700/60" />
       </div>

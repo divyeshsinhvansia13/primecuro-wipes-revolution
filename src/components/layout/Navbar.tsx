@@ -1,18 +1,21 @@
 
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Menu, X, ShoppingCart, Search } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   const navItems = [
     { name: "Products", href: "/products" },
     { name: "Bundle & Save", href: "/bundles" },
     { name: "About Us", href: "/about" },
-    { name: "Sustainability", href: "/sustainability" }
+    { name: "Sustainability", href: "/sustainability" },
+    { name: "Goals & Impact", href: "/goals-impact" },
+    { name: "Blog", href: "/blog" }
   ];
 
   useEffect(() => {
@@ -24,6 +27,11 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    // Close mobile menu when route changes
+    setIsOpen(false);
+  }, [location.pathname]);
 
   const closeMenu = () => {
     setIsOpen(false);
@@ -40,7 +48,10 @@ const Navbar = () => {
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="z-10">
-            <h1 className="text-xl font-bold tracking-tight text-brand-700">PrimeCuro</h1>
+            <h1 className={cn(
+              "text-xl font-bold tracking-tight transition-colors",
+              scrolled || isOpen ? "text-brand-700" : "text-white"
+            )}>PrimeCuro</h1>
           </Link>
 
           {/* Desktop Navigation */}
@@ -49,7 +60,10 @@ const Navbar = () => {
               <li key={item.name}>
                 <Link 
                   to={item.href} 
-                  className="text-sm font-medium text-gray-800 hover:text-brand-600 transition-colors"
+                  className={cn(
+                    "text-sm font-medium transition-colors",
+                    scrolled ? "text-gray-800 hover:text-brand-600" : "text-white/90 hover:text-white"
+                  )}
                 >
                   {item.name}
                 </Link>
@@ -59,10 +73,16 @@ const Navbar = () => {
 
           {/* Desktop Right Menu */}
           <div className="hidden lg:flex items-center space-x-4">
-            <button className="text-gray-800 hover:text-brand-600 transition-colors">
+            <button className={cn(
+              "transition-colors",
+              scrolled ? "text-gray-800 hover:text-brand-600" : "text-white/90 hover:text-white"
+            )}>
               <Search className="h-5 w-5" />
             </button>
-            <button className="text-gray-800 hover:text-brand-600 transition-colors">
+            <button className={cn(
+              "transition-colors",
+              scrolled ? "text-gray-800 hover:text-brand-600" : "text-white/90 hover:text-white"
+            )}>
               <ShoppingCart className="h-5 w-5" />
               <span className="sr-only">Cart</span>
             </button>
@@ -70,7 +90,10 @@ const Navbar = () => {
 
           {/* Mobile menu button */}
           <button 
-            className="lg:hidden z-20 text-gray-800 hover:text-gray-900 transition-colors p-1"
+            className={cn(
+              "lg:hidden z-20 transition-colors p-1",
+              scrolled || isOpen ? "text-gray-800 hover:text-gray-900" : "text-white hover:text-white/80"
+            )}
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
