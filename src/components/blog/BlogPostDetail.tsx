@@ -79,6 +79,7 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ posts }) => {
   };
   
   const relatedImages = getRelatedImages(post.category);
+  const fallbackImage = "https://images.unsplash.com/photo-1584308878734-70753fba1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
   
   return (
     <article className="py-8 pt-28 pb-16">
@@ -97,9 +98,10 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ posts }) => {
             src={post.image} 
             alt={post.title} 
             className="w-full h-full object-cover"
+            loading="eager"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
-              target.src = "https://images.unsplash.com/photo-1584308878734-70753fba1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+              target.src = fallbackImage;
             }}
           />
         </div>
@@ -135,9 +137,10 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ posts }) => {
                   src={image} 
                   alt={`Supporting image ${index + 1} for ${post.title}`} 
                   className="w-full h-60 object-cover"
+                  loading="lazy"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = "https://images.unsplash.com/photo-1584308878734-70753fba1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                    target.src = fallbackImage;
                   }}
                 />
               </div>

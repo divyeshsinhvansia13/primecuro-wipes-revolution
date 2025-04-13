@@ -7,4 +7,5 @@ export interface BlogPost {
   date: string;
   image: string;
   readTime: string;
+  content?: string; // Optional full content
 }
