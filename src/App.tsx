@@ -10,6 +10,8 @@ import Bundles from "./pages/Bundles";
 import About from "./pages/About";
 import Sustainability from "./pages/Sustainability";
 import NotFound from "./pages/NotFound";
+import GoalsImpact from "./pages/GoalsImpact";
+import Blog from "./pages/Blog";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +28,8 @@ const App = () => {
             <Route path="/bundles" element={<Bundles />} />
             <Route path="/about" element={<About />} />
             <Route path="/sustainability" element={<Sustainability />} />
+            <Route path="/goals-impact" element={<GoalsImpact />} />
+            <Route path="/blog" element={<Blog />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
