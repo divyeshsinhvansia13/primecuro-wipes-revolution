@@ -97,6 +97,10 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ posts }) => {
             src={post.image} 
             alt={post.title} 
             className="w-full h-full object-cover"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = "https://images.unsplash.com/photo-1584308878734-70753fba1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+            }}
           />
         </div>
         
@@ -131,6 +135,10 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ posts }) => {
                   src={image} 
                   alt={`Supporting image ${index + 1} for ${post.title}`} 
                   className="w-full h-60 object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "https://images.unsplash.com/photo-1584308878734-70753fba1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                  }}
                 />
               </div>
             ))}

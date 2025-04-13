@@ -6,6 +6,14 @@ import Footer from "@/components/layout/Footer";
 import { Search, ChevronRight, Calendar } from "lucide-react";
 import BlogPostDetail from "@/components/blog/BlogPostDetail";
 import { BlogPost } from "@/types/blog";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 // Blog post data
 const BLOG_POSTS: BlogPost[] = [
@@ -141,11 +149,16 @@ const BlogPostsList = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map(post => (
                 <div key={post.id} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                  <div className="h-48 overflow-hidden">
+                  <div className="h-48 overflow-hidden relative">
                     <img 
                       src={post.image} 
                       alt={post.title} 
                       className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
+                      loading="lazy"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://images.unsplash.com/photo-1584308878734-70753fba1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                      }}
                     />
                   </div>
                   <div className="p-6">
@@ -179,6 +192,29 @@ const BlogPostsList = () => {
               ))}
             </div>
           )}
+          
+          {/* Pagination */}
+          <div className="mt-12">
+            <Pagination>
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious href="#" />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#" isActive>1</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#">2</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#">3</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationNext href="#" />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+          </div>
         </div>
       </section>
 
