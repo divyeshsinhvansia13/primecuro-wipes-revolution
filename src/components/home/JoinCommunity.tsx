@@ -25,10 +25,10 @@ const JoinCommunity = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-brand-50 to-white">
+    <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <span className="inline-block px-3 py-1 text-xs font-semibold bg-brand-100 text-brand-800 rounded-full mb-3 shadow-sm">
+          <span className="inline-block px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-800 rounded-full mb-3 shadow-sm">
             JOIN US
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -43,25 +43,25 @@ const JoinCommunity = () => {
           {/* Community Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             <div className="bg-white p-6 rounded-xl shadow-md text-center">
-              <Users className="h-8 w-8 text-brand-600 mx-auto mb-3" />
+              <Users className="h-8 w-8 text-blue-600 mx-auto mb-3" />
               <h3 className="text-3xl font-bold text-gray-900 mb-1">50K+</h3>
               <p className="text-gray-600">Community Members</p>
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-md text-center">
-              <Star className="h-8 w-8 text-brand-600 mx-auto mb-3" />
+              <Star className="h-8 w-8 text-blue-600 mx-auto mb-3" />
               <h3 className="text-3xl font-bold text-gray-900 mb-1">4.9/5</h3>
               <p className="text-gray-600">Average Rating</p>
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-md text-center">
-              <MessageSquare className="h-8 w-8 text-brand-600 mx-auto mb-3" />
+              <MessageSquare className="h-8 w-8 text-blue-600 mx-auto mb-3" />
               <h3 className="text-3xl font-bold text-gray-900 mb-1">10K+</h3>
               <p className="text-gray-600">Testimonials</p>
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-md text-center">
-              <Heart className="h-8 w-8 text-brand-600 mx-auto mb-3" />
+              <Heart className="h-8 w-8 text-blue-600 mx-auto mb-3" />
               <h3 className="text-3xl font-bold text-gray-900 mb-1">85%</h3>
               <p className="text-gray-600">Repeat Customers</p>
             </div>
@@ -95,13 +95,13 @@ const JoinCommunity = () => {
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a 
                 href="/products"
-                className="px-8 py-3 bg-brand-600 text-white font-medium rounded-full hover:bg-brand-700 transition-colors shadow-lg hover:shadow-xl"
+                className="px-8 py-3 bg-blue-600 text-white font-medium rounded-full hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
               >
                 Shop Our Products
               </a>
               <a 
                 href="#newsletter"
-                className="px-8 py-3 bg-transparent text-brand-600 font-medium rounded-full border border-brand-600 hover:bg-brand-50 transition-colors"
+                className="px-8 py-3 bg-transparent text-blue-600 font-medium rounded-full border border-blue-600 hover:bg-blue-50 transition-colors"
               >
                 Subscribe to Updates
               </a>
