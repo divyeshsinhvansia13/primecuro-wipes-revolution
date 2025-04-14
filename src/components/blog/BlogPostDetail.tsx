@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ChevronLeft, Calendar, Tag } from "lucide-react";
@@ -51,35 +50,35 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ posts }) => {
     ));
   };
   
-  // Generate related images based on category
+  // Generate related images based on category with updated URLs
   const getRelatedImages = (category: string) => {
     const categoryImages: Record<string, string[]> = {
       "Sustainability": [
-        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1584715688379-d49220c8ac32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        "https://images.unsplash.com/photo-1580349832531-4ab9bc28e827?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1550663358-a431dfbf38f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
       ],
       "Health": [
-        "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        "https://images.unsplash.com/photo-1514832328579-a3c3186262fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1511688878353-3a2f5be94cd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
       ],
       "Company": [
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1571624436279-b272aff752b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
       ],
       "Innovation": [
-        "https://images.unsplash.com/photo-1628361623660-2623a519bf97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1507413245164-6160d8298b31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        "https://images.unsplash.com/photo-1581092787765-e561eca68f7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1572021335469-31706a17aaef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
       ]
     };
     
     return categoryImages[category] || [
-      "https://images.unsplash.com/photo-1584308878734-70753fba1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1605264327238-5c1451711a2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1613323593608-abc90fec84ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1556742205-e10c9486e506?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     ];
   };
   
   const relatedImages = getRelatedImages(post.category);
-  const fallbackImage = "https://images.unsplash.com/photo-1584308878734-70753fba1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+  const fallbackImage = "https://images.unsplash.com/photo-1581092787765-e561eca68f7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
   
   return (
     <article className="py-8 pt-28 pb-16">

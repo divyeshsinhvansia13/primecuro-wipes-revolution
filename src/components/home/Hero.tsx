@@ -41,7 +41,7 @@ const Hero: React.FC<HeroProps> = ({
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        {/* Background image with premium styling */}
+        {/* Background image with styling */}
         <img
           src="https://images.unsplash.com/photo-1563178406-4cdc2923acbc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80"
           alt="PrimeCuro Hero"
@@ -56,11 +56,9 @@ const Hero: React.FC<HeroProps> = ({
         className="container mx-auto px-4 pt-20 relative z-10 text-center transition-all duration-300"
       >
         <div className="max-w-4xl mx-auto space-y-8">
-          <div className="inline-block px-4 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-2">
-            <span className="text-white/90 text-sm font-medium">Premium Eco-Friendly Products</span>
-          </div>
+          {/* Removed "Premium Eco-Friendly Products" text */}
           
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tighter drop-shadow-md">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tighter drop-shadow-md">
             Feel Clean. Stay Confident. <br/> 
             <span className="text-brand-300">Wipe Smarter</span> with PrimeCuro.
           </h1>

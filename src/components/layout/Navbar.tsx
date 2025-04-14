@@ -9,6 +9,9 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
+  // Determine if the current page has a white background that needs dark text
+  const hasDarkBackground = location.pathname === "/" || location.pathname.includes("/sustainability");
+  
   const navItems = [
     { name: "Products", href: "/products" },
     { name: "Bundle & Save", href: "/bundles" },
@@ -50,7 +53,7 @@ const Navbar = () => {
           <Link to="/" className="z-10">
             <h1 className={cn(
               "text-xl font-bold tracking-tight transition-colors",
-              scrolled || isOpen ? "text-brand-700" : "text-white"
+              scrolled || isOpen || !hasDarkBackground ? "text-brand-700" : "text-white"
             )}>PrimeCuro</h1>
           </Link>
 
@@ -62,7 +65,9 @@ const Navbar = () => {
                   to={item.href} 
                   className={cn(
                     "text-sm font-medium transition-colors",
-                    scrolled ? "text-gray-800 hover:text-brand-600" : "text-white/90 hover:text-white"
+                    scrolled || !hasDarkBackground 
+                      ? "text-gray-800 hover:text-brand-600" 
+                      : "text-white/90 hover:text-white"
                   )}
                 >
                   {item.name}
@@ -75,13 +80,13 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <button className={cn(
               "transition-colors",
-              scrolled ? "text-gray-800 hover:text-brand-600" : "text-white/90 hover:text-white"
+              scrolled || !hasDarkBackground ? "text-gray-800 hover:text-brand-600" : "text-white/90 hover:text-white"
             )}>
               <Search className="h-5 w-5" />
             </button>
             <button className={cn(
               "transition-colors",
-              scrolled ? "text-gray-800 hover:text-brand-600" : "text-white/90 hover:text-white"
+              scrolled || !hasDarkBackground ? "text-gray-800 hover:text-brand-600" : "text-white/90 hover:text-white"
             )}>
               <ShoppingCart className="h-5 w-5" />
               <span className="sr-only">Cart</span>
@@ -92,7 +97,7 @@ const Navbar = () => {
           <button 
             className={cn(
               "lg:hidden z-20 transition-colors p-1",
-              scrolled || isOpen ? "text-gray-800 hover:text-gray-900" : "text-white hover:text-white/80"
+              scrolled || isOpen || !hasDarkBackground ? "text-gray-800 hover:text-gray-900" : "text-white hover:text-white/80"
             )}
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
