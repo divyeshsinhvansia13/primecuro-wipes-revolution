@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from "react";
 import { ShieldCheck, Leaf, Droplets, RefreshCw } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -60,10 +59,10 @@ const Features = () => {
   }, []);
   
   return (
-    <section className="py-20 bg-blue-50">
+    <section className="py-20 bg-green-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <span className="inline-block px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-800 rounded-full mb-3">
+          <span className="inline-block px-3 py-1 text-xs font-semibold bg-brand-100 text-brand-800 rounded-full mb-3">
             WHY CHOOSE US
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -80,13 +79,13 @@ const Features = () => {
               key={feature.id}
               ref={(el) => (featureRefs.current[index] = el)}
               className={cn(
-                "bg-white rounded-xl p-8 shadow-sm border border-blue-100 transition-all duration-500 opacity-0 transform translate-y-8 hover:shadow-md hover:-translate-y-1",
+                "bg-white rounded-xl p-8 shadow-sm border border-gray-100 transition-all duration-500 opacity-0 transform translate-y-8 hover:shadow-md hover:-translate-y-1",
                 index % 2 === 0 ? "lg:translate-y-4" : ""
               )}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-6">
-                <feature.icon className="h-6 w-6 text-blue-600" />
+              <div className="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center mb-6">
+                <feature.icon className="h-6 w-6 text-brand-600" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
                 {feature.title}

@@ -55,31 +55,31 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ posts }) => {
   const getRelatedImages = (category: string) => {
     const categoryImages: Record<string, string[]> = {
       "Sustainability": [
-        "https://plus.unsplash.com/premium_photo-1682092561334-2fd88018d342?q=80&w=800",
-        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=800"
+        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1584715688379-d49220c8ac32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
       ],
       "Health": [
-        "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800",
-        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800"
+        "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
       ],
       "Company": [
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800",
-        "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=800"
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
       ],
       "Innovation": [
-        "https://images.unsplash.com/photo-1628361623660-2623a519bf97?q=80&w=800",
-        "https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=800"
+        "https://images.unsplash.com/photo-1628361623660-2623a519bf97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1507413245164-6160d8298b31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
       ]
     };
     
     return categoryImages[category] || [
-      "https://images.unsplash.com/photo-1584308878734-70753fba1dba?q=80&w=800",
-      "https://images.unsplash.com/photo-1605264327238-5c1451711a2c?q=80&w=800"
+      "https://images.unsplash.com/photo-1584308878734-70753fba1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1605264327238-5c1451711a2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     ];
   };
   
   const relatedImages = getRelatedImages(post.category);
-  const fallbackImage = "https://images.unsplash.com/photo-1584308878734-70753fba1dba?q=80&w=800";
+  const fallbackImage = "https://images.unsplash.com/photo-1584308878734-70753fba1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
   
   return (
     <article className="py-8 pt-28 pb-16">

@@ -15,7 +15,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-// Blog post data with updated image URLs
+// Blog post data with ensured valid image URLs
 const BLOG_POSTS: BlogPost[] = [
   {
     id: 1,
@@ -23,7 +23,7 @@ const BLOG_POSTS: BlogPost[] = [
     excerpt: "Learn how eco-friendly baby wipes can reduce your carbon footprint while keeping your little one clean and healthy.",
     category: "Sustainability",
     date: "April 10, 2025",
-    image: "https://images.unsplash.com/photo-1623102420661-f0ec1e930ba9?q=80&w=800",
+    image: "https://images.unsplash.com/photo-1623102420661-f0ec1e930ba9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     readTime: "5 min read"
   },
   {
@@ -32,7 +32,7 @@ const BLOG_POSTS: BlogPost[] = [
     excerpt: "Discover the benefits of using adult-specific wipes for personal hygiene and how they compare to traditional toilet paper.",
     category: "Health",
     date: "April 7, 2025",
-    image: "https://images.unsplash.com/photo-1584308878734-70753fba1dba?q=80&w=800",
+    image: "https://images.unsplash.com/photo-1584308878734-70753fba1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     readTime: "4 min read"
   },
   {
@@ -41,7 +41,7 @@ const BLOG_POSTS: BlogPost[] = [
     excerpt: "How our disinfected wipes can help protect your family from harmful bacteria and viruses in everyday environments.",
     category: "Health",
     date: "April 3, 2025",
-    image: "https://images.unsplash.com/photo-1605264327238-5c1451711a2c?q=80&w=800",
+    image: "https://images.unsplash.com/photo-1605264327238-5c1451711a2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     readTime: "6 min read"
   },
   {
@@ -50,7 +50,7 @@ const BLOG_POSTS: BlogPost[] = [
     excerpt: "The story behind our commitment to creating biodegradable, chemical-free wipes that don't compromise on effectiveness.",
     category: "Company",
     date: "March 28, 2025",
-    image: "https://images.unsplash.com/photo-1584715688379-d49220c8ac32?q=80&w=800",
+    image: "https://images.unsplash.com/photo-1584715688379-d49220c8ac32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     readTime: "7 min read"
   },
   {
@@ -59,7 +59,7 @@ const BLOG_POSTS: BlogPost[] = [
     excerpt: "Explore the innovative materials and technologies that make our wipes both effective and environmentally friendly.",
     category: "Innovation",
     date: "March 22, 2025",
-    image: "https://images.unsplash.com/photo-1628361623660-2623a519bf97?q=80&w=800",
+    image: "https://images.unsplash.com/photo-1628361623660-2623a519bf97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     readTime: "8 min read"
   }
 ];
@@ -68,7 +68,7 @@ const BlogPostsList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const navigate = useNavigate();
-  const fallbackImage = "https://images.unsplash.com/photo-1584308878734-70753fba1dba?q=80&w=800";
+  const fallbackImage = "https://images.unsplash.com/photo-1584308878734-70753fba1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
 
   useEffect(() => {
     window.scrollTo(0, 0);

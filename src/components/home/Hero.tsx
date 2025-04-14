@@ -41,13 +41,14 @@ const Hero: React.FC<HeroProps> = ({
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
+        {/* Background image with premium styling */}
         <img
-          src="/lovable-uploads/93bd601c-2f16-4b20-ae1c-0d0c4ff95004.png"
+          src="https://images.unsplash.com/photo-1563178406-4cdc2923acbc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80"
           alt="PrimeCuro Hero"
           className="absolute inset-0 w-full h-full object-cover z-0"
-          style={{ objectPosition: "center top", filter: "brightness(0.8)" }}
+          style={{ objectPosition: "center top" }}
         />
-        <div className="absolute inset-0 bg-blue-900/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-brand-800/50 to-brand-700/60" />
       </div>
       
       <div 
@@ -55,15 +56,19 @@ const Hero: React.FC<HeroProps> = ({
         className="container mx-auto px-4 pt-20 relative z-10 text-center transition-all duration-300"
       >
         <div className="max-w-4xl mx-auto space-y-8">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tighter drop-shadow-md">
-            Innovative Hygiene for a <br/> 
-            <span className="text-blue-200">Cleaner Tomorrow</span>
+          <div className="inline-block px-4 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-2">
+            <span className="text-white/90 text-sm font-medium">Premium Eco-Friendly Products</span>
+          </div>
+          
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tighter drop-shadow-md">
+            Feel Clean. Stay Confident. <br/> 
+            <span className="text-brand-300">Wipe Smarter</span> with PrimeCuro.
           </h1>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-5 pt-8">
             <CTAButton 
               size="lg" 
-              className="shadow-lg hover:shadow-xl transition-shadow w-full sm:w-auto px-8 bg-blue-600 hover:bg-blue-700"
+              className="shadow-lg hover:shadow-xl transition-shadow w-full sm:w-auto px-8"
               onClick={onShopProductsClick}
             >
               Shop Now
@@ -86,7 +91,7 @@ const Hero: React.FC<HeroProps> = ({
         onClick={scrollToContent}
         aria-label="Scroll down"
       >
-        <div className="p-2 rounded-full bg-blue-500/20 backdrop-blur-sm border border-blue-200/30 group-hover:bg-blue-500/30 transition-all">
+        <div className="p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 group-hover:bg-white/20 transition-all">
           <ArrowDown className="h-6 w-6" />
         </div>
       </button>
