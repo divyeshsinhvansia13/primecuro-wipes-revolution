@@ -41,14 +41,14 @@ const Hero: React.FC<HeroProps> = ({
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        {/* Background image with improved clarity */}
+        {/* Background image without blur */}
         <img
           src="https://images.unsplash.com/photo-1563178406-4cdc2923acbc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80"
           alt="PrimeCuro Hero"
           className="absolute inset-0 w-full h-full object-cover z-0"
           style={{ objectPosition: "center top" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/70 via-blue-800/60 to-blue-700/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/60 via-blue-800/50 to-blue-700/60" />
       </div>
       
       <div 
@@ -56,9 +56,9 @@ const Hero: React.FC<HeroProps> = ({
         className="container mx-auto px-4 pt-20 relative z-10 text-center transition-all duration-300"
       >
         <div className="max-w-4xl mx-auto space-y-8">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tighter drop-shadow-md">
-            Feel Clean. Stay Confident. <br/> 
-            <span className="text-blue-200">Wipe Smarter</span> with PrimeCuro.
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tighter drop-shadow-md">
+            Innovative Hygiene for a <br/> 
+            <span className="text-blue-200">Cleaner Tomorrow</span>
           </h1>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-5 pt-8">
