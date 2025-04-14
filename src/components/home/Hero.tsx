@@ -41,14 +41,13 @@ const Hero: React.FC<HeroProps> = ({
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        {/* Background image without blur */}
         <img
-          src="https://images.unsplash.com/photo-1563178406-4cdc2923acbc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80"
+          src="/lovable-uploads/93bd601c-2f16-4b20-ae1c-0d0c4ff95004.png"
           alt="PrimeCuro Hero"
           className="absolute inset-0 w-full h-full object-cover z-0"
-          style={{ objectPosition: "center top" }}
+          style={{ objectPosition: "center top", filter: "brightness(0.8)" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/60 via-blue-800/50 to-blue-700/60" />
+        <div className="absolute inset-0 bg-blue-900/40" />
       </div>
       
       <div 
